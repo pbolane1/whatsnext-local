@@ -1,0 +1,7 @@
+<name/> has submitted in inquiry via the website.
+
+<comments/>
+
+Name:          <name/>
+Email Address: <email/>
+Phone:         <phone/>

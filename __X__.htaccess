@@ -1,0 +1,45 @@
+
+#######################################
+
+RewriteRule ^buyers(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^sellers(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^users(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^agents(.*) /pages/agents/$1 [L,QSA,NC]
+
+################################################################
+## 
+## Page Types
+## 
+################################################################
+
+
+################################################################
+## 
+## 301s
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+riteRule ^users(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^agents(.*) /pages/agents/$1 [L,QSA,NC]
+
+################################################################
+## 
+## Page Types
+## 
+################################################################
+
+
+################################################################
+## 
+## 301s
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

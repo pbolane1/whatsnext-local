@@ -1,0 +1,7 @@
+@media (max-width: 767px) {
+	DIV.header_area DIV.logo{padding:0px 20px;}
+	DIV.header_area DIV.logo IMG {width: auto;max-width: 80%;max-height: 50px;}
+	
+	DIV.header_area DIV.logo2{text-align:left}
+	.navbar-inverse .navbar-nav{display:block;}
+}

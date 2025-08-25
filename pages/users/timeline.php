@@ -1,0 +1,53 @@
+<?php
+	include('../../include/common.php');
+	include('../../include/_user.php');
+
+	$content=new content();
+	$content->CreateFromKeys('content_area','HOME');
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Buyers/ Sellers - My Timeline</title>
+<meta name="description" content="<?php echo($content->GetMetaDescription());?>">
+<meta name="keywords" content="<?php echo($content->GetMetaKeywords());?>">
+<?php include ('../../modules/head.php');?>
+<?php include ('modules/head.php');?>
+</head>
+
+<body class='buyer'>
+	<?php $__headline__=$user_contact->IsLoggedIn()?'Transaction Timeline':'Login';?>
+	<?php include ('modules/header.php');?>
+	<div class='content_area'>	
+		<div class='container content_wrapper'>
+			<div class='content_inner'>	
+<?php			
+	if(!$user_contact->IsLoggedIn())
+		$user_contact->LoginForm();
+	else
+	{
+		$user->DisplayIntro();
+	 	echo("<div id='user_tools_container'>");
+		$user->UserTools($HTTP_GET_VARS);
+		echo("</div>");
+		echo("<div class='row'>");
+		echo("<div class='col-sm-7'>");
+	 	echo("<div id='timeline_container'>");
+		$user->DisplayTimeline();
+		echo("</div>");
+		echo("</div>");
+		echo("<div class='col-sm-5'>");
+		$user->DisplaySidebar();
+		echo("</div>");
+		echo("</div>");
+	}
+?>
+			</div>
+		</div>
+	</div>
+	
+	<?php include ('modules/footer.php');?>
+	<?php include ('../../modules/footer_scripts.php');?>
+	<?php include ('modules/footer_scripts.php');?>
+</body>
+</html>

@@ -1,0 +1,58 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+log.txt
+
+# Temporary files
+temp/
+temp.htm
+test.ics
+test.php
+
+# Uploads and dynamic content
+uploads/
+dynamic/files/
+dynamic/images/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Dependencies (if using Composer)
+vendor/
+composer.lock
+
+# Cache
+cache/
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*.save
+
+# Compiled files
+*.min.js
+*.min.css
+*.map
+
+# Test files
+tests/
+test/

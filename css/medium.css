@@ -1,0 +1,9 @@
+@media (min-width: 992px) and (max-width: 1199px) {
+
+	DIV.header_area DIV.logo IMG{max-width:300px;max-height:100px;}
+
+	.footer .copyright{font-size:14px;}
+	.footer .copyright A{font-size:14px;}
+	.footer .copyright A:hover{font-size:14px;}
+
+}

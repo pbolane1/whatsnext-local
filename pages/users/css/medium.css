@@ -1,0 +1,5 @@
+@media (min-width: 992px) and (max-width: 1199px) {
+	DIV.header_area DIV.logo IMG{max-width:200px;}
+
+	DIV.header_area DIV.logo1{padding:20px 0px}	
+}

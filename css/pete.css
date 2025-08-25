@@ -1,0 +1,170 @@
+/*global*/
+.foo{color:#123456}
+
+
+
+/*large only*/
+@media (min-width: 1200px) {
+
+}
+
+/*medium*/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*small*/
+@media (min-width: 768px) and (max-width: 991px) {
+BODY.scrolled .scroll_to_top {
+    bottom: 38px;
+    right: 14px;
+    z-index: 2;
+}
+}
+
+/*xsmall*/
+@media (max-width: 767px) {
+BODY.scrolled .scroll_to_top {
+    bottom: 38px;
+    right: 14px;
+    z-index: 2;
+}
+}
+
+
+/* Dim N/A Contract Terms */
+TR.user_contract_date_na>TD {
+    opacity: 0.3;
+}
+
+/* Footer */
+.disclaimer 
+    {
+        background: #313234;
+        border-bottom: 1px solid #d7d7d7;
+    }
+a.disclink 
+    {
+    color:#ffffff;
+    text-decoration: none;
+    }
+a.disclink:hover 
+    {
+    color: #009901;
+    }
+
+.disclaimer {
+    text-align: center;
+    padding: 20px 0px;
+    background: #282828;
+    margin-top: 0px;
+    font-size: 15px;
+    color: #CCCCCC;
+    }
+
+#footmenu {
+	background: #282828;
+	min-height: 50px;
+	padding-top:15px;
+    padding-bottom:15px;
+    border-bottom: 1px solid #d7d7d7;
+}
+#footmenu ul, #menu li {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none
+}
+#footmenu ul {
+	width: 100%;
+	text-align: center;
+}
+#footmenu li {
+	display: inline-block;
+	position: relative;
+}
+#footmenu a {
+	display: block;
+	line-height: 20px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 12px;
+    text-transform: uppercase;
+}
+#footmenu li a:hover {
+	color: #009901;
+}
+
+@media screen and (max-width: 800px){
+	#footmenu {position:relative}
+	#footmenu ul {height:auto;}
+	#footmenu li {display:block;float:none;width:auto;}
+}
+
+
+
+
+
+/* New Textured Header BG */
+DIV.headline {
+    background: #121619;
+    padding: 50px;
+    min-height:100%;
+    background:linear-gradient(0deg, rgba(18, 22, 25, 0.8), rgba(18, 22, 25, 0.8)), url(https://app.whatsnext.realestate/images/header-bg.jpg);
+    background-size:cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+DIV.headline H1 {
+    background: transparent;
+}
+
+
+
+
+/* Links & Space between non UC and UC divider */
+.timeline_contract_boundary .timeline_contract_boundary_info {color: #009901;}
+.timeline_contract_boundary_action A {color: #cc0000;}
+.timeline_contract_boundary {
+    padding: 150px 0px 5px 50px;
+    margin-bottom: 150px;
+}
+
+
+
+
+/* Timeline Layout */
+/* Agent*/
+.agent_tools_buttons {
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+}
+.client_intro .client_intro_address INPUT.text {
+    font-size: 40PX;
+    font-weight: 600;
+    margin: 40px;
+}
+.client_intro INPUT.H2 {text-align: center;}
+
+
+/* Users */
+.client_intro H2 {
+    font-size:40px;
+    text-align: center;
+}
+.client_intro_headline {
+    text-align: center;
+    margin: 50px;
+}
+.client_intro_content {margin: 50px 0;}
+
+#user_tools_container .agent_tools {
+    border-bottom:0px;
+} 
+
+.client_dashboard_next_timeline_item {
+    padding-bottom: 39px;
+    border-bottom: 3px solid black;
+}

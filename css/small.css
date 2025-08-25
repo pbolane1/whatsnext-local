@@ -1,0 +1,56 @@
+@media (min-width: 768px) and (max-width: 991px) {
+
+	.header_area .container{padding:0px;width:100%}
+	.navigation_area{height:60px;}
+	.navbar{top:0px;}
+	DIV.header_area DIV.logo IMG{max-width:150px;max-height:50px;}
+	.navbar .navbar-collapse{margin-top:-8px;}
+	.navbar-inverse .navbar-toggle{position:relative;top:-195px;}
+
+	.navbar-inverse .navbar-nav > li > a{font-size:14px;}
+
+	DIV.headline H1{font-size:48px;}
+
+	.sidebar{padding-left:0px;}
+	
+
+	.footer .left{margin-bottom:45px;text-align:center;}
+	.footer .left IMG{margin-bottom:45px;max-width:200px}
+	.footer .right{margin-bottom:45px;text-align:center;}
+	.footer .center{margin-bottom:45px;text-align:center;}
+
+
+	.copyright{text-align:center;font-size:12px;}
+	.copyright A{font-size:12px;}
+	.copyright A:hover{font-size:12px;}
+
+	.timeline .timeline_item_image IMG{width:100%;}
+
+
+	.timeline_contract_boundary{}
+	.timeline_contract_boundary .timeline_contract_boundary_info{text-align:center}
+	.timeline_contract_boundary .timeline_contract_boundary_action,
+	.timeline_contract_boundary .timeline_contract_boundary_action A{text-align:center}
+
+
+	TABLE.listing TH{white-space:normal !important;}
+	TABLE.listing INPUT[type=button],
+	TABLE.listing INPUT.button,
+	TABLE.listing BUTTON{margin:5px;}	
+
+	.agent_dashboard .next_task{display:block;text-align:center;}
+	.agent_dashboard .edit_label{display:none;}
+	.agent_dashboard DIV.edit_label_small{display:block;}
+	.agent_dashboard TD.edit_label_small{display:table-cell;}
+	.agent_dashboard TH.edit_label_small{display:table-cell;}
+	.agent_dashboard SPAN.edit_label_small{display:inline;}
+
+	.agent_dashboard TABLE.editing TD{text-align:center;}
+	.agent_dashboard TABLE.editing TD INPUT.text{text-align:center;}
+	.agent_dashboard TABLE.listing TD SELECT{width:auto;text-align:center}
+	
+	.key{margin:10px 0px}
+	.key .key_line{text-align:center;}
+	
+	.button_container{text-align:center;}
+}

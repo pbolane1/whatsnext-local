@@ -1,0 +1,109 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<div style='width:100%;'>
+			<div style='background:#000000'>
+				<div style='margin:0px auto;width:800px;max-width:100%;'>
+					<table style='width:100%;'>
+						<tr>
+							<td style='width:20%;text-align:left;'>
+								<a href="<agent_url/>"><img src='<base_url/>images/logo.png'></a>
+							</td>	
+							<td style='width:60%'>
+								<br>
+							</td>	
+							<td style='width:20%;text-align:right;'>
+								<a href="<agent_url/>"><img src='<agent_image_file1/>'></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>	
+
+			<!-- IF PERSON ALREADY HAS AN ACCOUNT:     -->
+			<div style='background:#FFFFFF'>
+				<div style='margin:0px auto;width:800px;max-width:100%;padding:50px 0px'>
+					<h1 style='text-align:center;font-size:35px;color:#000000'>Invitation to join <coordinator_name/> on What's Next!</h1>
+					
+					
+					<p><coordinator_name/> has invited you to join them on What's Next Real Estate to coordinate with you on your transactions.</p>
+					<p>Click the buttons below to accept or decline this requiest.</p>
+
+					<p>Accepting this person as a coordinator will allow them to view and make changes to your account.</p>
+						
+					<p><b>NOTE ABOUT MULTIPLE COORDINATORS</b>: If you already have one coordinator, you are permitted to have multiple coordinators (for example an office manager AND a transaction coordinator) if desired. However, you MUST ensure that the email address you use to access the account is the SAME email address the coordinators send the invite. If they sent this invite to the wrong email address, decline this invite and ask them to re-send one to your existing account email address.
+					</p>
+			
+					
+					<div style='text-align:center;margin:20px;'>
+						<a style='display:inline-block;padding:5px 20px;margin:0px 10px;color:#FFFFFF;text-decoration:none;border-radius:5px;background:#009901' href='<accept_url/>'>Accept Invitation</a>
+						<a style='display:inline-block;padding:5px 20px;margin:0px 10px;color:#FFFFFF;text-decoration:none;border-radius:5px;background:#cc0000' href='<decline_url/>'>Decline Invitation</a>
+						<a style='display:inline-block;padding:5px 20px;margin:0px 10px;color:#FFFFFF;text-decoration:none;border-radius:5px;background:#000000' href='<agent_url/>'>Access Your Account</a>
+					</div>
+				</div>
+			</div>	
+			<!-- END EXISTING ACCOUNT TEXT -->
+
+
+			<!-- IF PERSON DIDNT HAVE AN ACCOUNT     -->
+			<div style='background:#FFFFFF'>
+				<div style='margin:0px auto;width:800px;max-width:100%;padding:50px 0px'>
+					<h1 style='text-align:center;font-size:35px;color:#000000'><coordinator_name/> wants you to join them on What's Next!</h1>
+			
+			
+					<p><coordinator_name/> has invited you to join them on <a href="https://whatsnext.realestate">What's Next</a> to coordinate with you on your transactions.</p>
+					<p>This easy to use website will keep both you and your clients on track throughout the entire process. If you want to learn more about this program, you can do so by <a href="https://whatsnext.realestate/learn-more/">visting the main site here</a>.  
+						
+					<p>Accepting this person as a coordinator will allow them to view and make changes to your account.</p>			
+			
+						<div style='text-align:center;margin:20px;'>
+							<a style='display:inline-block;padding:5px 20px;margin:0px 10px;color:#FFFFFF;text-decoration:none;border-radius:5px;background:#009901' href='<accept_url/>'>Accept Invitation</a>
+							<a style='display:inline-block;padding:5px 20px;margin:0px 10px;color:#FFFFFF;text-decoration:none;border-radius:5px;background:#cc0000' href='<decline_url/>'>Decline Invitation</a>
+							<a style='display:inline-block;padding:5px 20px;margin:0px 10px;color:#FFFFFF;text-decoration:none;border-radius:5px;background:#000000' href='<agent_url/>'>Decline Invitation, but get my own free account</a>
+						</div>
+
+					<p>If you are wondering why you are receving this email, we recommend you contact <coordinator_name/> at <coordinator_email></p>
+
+				</div>				
+			</div>	
+					
+		<!-- END NEW ACCOUNT TEXT -->
+
+
+			
+
+
+			<!--div style='background:#313233;padding:75px 0px 75px 0px;'>
+				<div style='margin:0px auto;width:800px;max-width:100%;'>
+					<table style='width:100%;'>
+						<tr>
+							<td style='width:11%;color:#e7e7e7;padding:0px 15px;'>
+								<if agent_image_file3/>
+									<img src='<agent_image_file3/>'>
+								</if agent_image_file3/>
+							</td>
+							<td style='width:22%;color:#e7e7e7;padding:0px 15px;'>
+								<agent_fullname/><br>
+								<agent_company/><br>
+								<agent_number/><br>
+								<a href='tel:<agent_phone/>'><agent_phone/></a><br>
+								<a href='mailto:<agent_email/>'><agent_email/></a><br>
+							</td>
+							<td style='width:33%;color:#e7e7e7;padding:0px 15px;'>
+								<img src='<base_url/>/images/eh6.png'><img src='<base_url/>/images/realtor5.png'><br>
+								Copyright &copy; <a href='http://whatsnext.realestate'>whatsnext.realestate</a><br>				
+							</td>
+							<td style='width:33%;color:#e7e7e7;padding:0px 15px;'>
+								<if agent_image_file2/>
+									<a href='https://www.google.com/maps/dir/<agent_company/> <agent_address/>'><img src='<agent_image_file2/>'></a>
+								</if agent_image_file2/>
+								<a href='https://www.google.com/maps/dir/<agent_company/> <agent_address>'><agent_address/></a>
+							</td>
+						</tr>			
+					</table>
+				</div>	
+			</div-->	
+		</div>
+	</body>
+</html>

@@ -1,0 +1,108 @@
+@media (max-width: 767px) {
+
+	DIV.header_area{padding:10px 0px;} 
+	.header_area .container{padding:0px;width:100%}
+	.navigation_area{height:60px;}
+	.navbar{top:0px;}
+	DIV.header_area DIV.logo IMG{width:200px;max-width:80%;max-height:100%;}
+	.navbar .navbar-collapse{margin-top:10px;position:absolute;width:100%;top:71px;z-index:1000;}
+	.navbar-inverse .navbar-toggle{}
+
+	DIV.headline H1{font-size:32px;}
+
+	.content_wrapper{margin:0px 30px;}
+
+	.sidebar{padding-left:0px;}
+
+
+	.footer .left{margin-bottom:45px;text-align:center;}
+	.footer .left IMG{margin-bottom:45px;max-width:200px}
+	.footer .right{margin-bottom:45px;text-align:center;}
+	.footer .center{margin-bottom:45px;text-align:center;}
+
+
+	.copyright{text-align:center;font-size:12px;}
+	.copyright A{font-size:12px;}
+	.copyright A:hover{font-size:12px;}
+	
+
+	.timeline .timeline_item_image IMG{width:100%;}
+
+	TABLE.listing TH{white-space:normal !important;}
+	TABLE.listing INPUT[type=button],
+	TABLE.listing INPUT.button,
+	TABLE.listing BUTTON{margin:5px;}	
+
+	#popup .timeline_item_detail {width: 100%;height:auto;max-height: 100%;margin: 0% 0%;}
+	
+	.agent_dashboard .next_task{display:block;text-align:center;}
+	.agent_dashboard .edit_label{display:none;}
+	.agent_dashboard DIV.edit_label_small{display:block;}
+	.agent_dashboard TD.edit_label_small{display:table-cell;}
+	.agent_dashboard TH.edit_label_small{display:table-cell;}
+	.agent_dashboard SPAN.edit_label_small{display:inline;}
+
+	.agent_dashboard TABLE.editing TD{text-align:center;}
+	.agent_dashboard TABLE.editing TD INPUT.text{text-align:center;}
+	.agent_dashboard TABLE.listing TD SELECT{width:auto;text-align:center}
+
+
+	.agent_tools{border:none;}
+	.agent_tools_xs{margin:0px;}
+	.agent_tools_xs A{display:inline-block;white-space:nowrap;}
+	.agent_tools_xs A .icon{display:inline-block;font-size:30px;line-height: 30px;height: 30px;margin: 15px 0px;}
+	.agent_tools_xs A .text{display:inline-block;line-height: 30px;height: 30px;margin: 15px 15px;position: relative;top: -6px;}
+
+	#popup .agent_tools A{width:30%;display:block;margin:10px 10%;float:left;}
+	#popup .agent_tools::after{clear:both;content:"";display:block;}	
+
+	.client_intro INPUT.H2{font-size:20px;}
+	
+	.key{margin:10px 0px}
+	.key .key_line{text-align:center;}
+
+	.button_container{text-align:center;}
+
+	.timeline{border-left:none;margin:0px;}
+	.timeline .timeline_item{margin:0px 0px 50px 0px;}
+	.timeline .timeline_item .timeline_item_heading .timeline_item_icon{display:none;}
+	.timeline .timeline_item .timeline_item_heading .arrow-left{display:none;}
+/*
+	.timeline .timeline_item .timeline_agent_edit{position: absolute;top: -30px;right:0px;}
+	.timeline .timeline_item .timeline_agent_edit A .fa{color:#000000 !important;}
+	.timeline .timeline_item .timeline_agent_edit A.timeline_item_restore{position: relative;top: 50px;right:40px;}
+	.timeline .timeline_item .timeline_agent_edit A.timeline_item_checkbox{position: relative;top: 50px;right:40px;}
+	.timeline .timeline_item .timeline_agent_edit A.timeline_item_checkbox .fa{color:#FFFFFF !important}
+	.timeline .timeline_item_EDITING INPUT.H3, 
+	.timeline .timeline_item_EDITING SELECT.H3{width:calc(100% - 30px)}
+*/
+	.timeline_preview{padding:40px 40px;margin:20px 0px;border:1px dotted #000000}
+	.timeline_preview .timeline_item{margin:0px;}
+
+	.timeline_contract_boundary{padding:5px;}
+	.timeline_contract_boundary .timeline_contract_boundary_info{text-align:center}
+	.timeline_contract_boundary .timeline_contract_boundary_action,
+	.timeline_contract_boundary .timeline_contract_boundary_action A{text-align:center}
+
+	.modal{margin:25px 25px;}
+	#popup .modal-header .close{top:10px;left:-10px;}
+	
+	
+	#popup TEXTAREA.wysiwyg {max-height: 100%;}
+
+	.progress_meter_full{display:none}
+	.progress_meter_mobile{display:block;position:fixed;bottom:0px;width:100%;background:#000000;padding:5px;z-index:1000;}
+	.progress_meter_mobile .progress_bar_container .progress_bar{background:#00DD7F !important}
+	.progress_meter_mobile H2{color:#FFFFFF;}
+	.progress_meter_mobile H5{color:#FFFFFF;}
+	.progress_meter_mobile .progress_info{color:#FFFFFF;}
+	.progress_meter_mobile .progress_bar_container{position:relative;}
+	.progress_meter_mobile .progress_bar_container .progress_percent{position:absolute;;color:#00DD7F !important;top:0px;left:0px;margin-left:5px;}
+
+	.progress_meter_mobile_short{display:block}
+	.progress_meter_mobile_full{display:none}
+	.progress_meter_mobile_expanded .progress_meter_mobile_full{display:block}
+	.progress_meter_mobile_expanded .progress_meter_mobile_full .progress_meter_full{display:block}
+	.progress_meter_mobile_expanded .progress_meter_mobile_short{display:none}
+}
+

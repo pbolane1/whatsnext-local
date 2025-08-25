@@ -1,0 +1,606 @@
+/***************************************************\
+*
+*	POCO TECHNOLOGIES LLC CORE LIBRARY
+*
+*	VERSION 		4.0.2
+*	LAST UPDATE/MERGE 	05/16/2022
+*	
+\***************************************************/
+
+/***************************************************\
+*
+*	Versioning notes:	
+*
+*	-version format-
+*		MAJOR.MINOR.SUB-MINOR
+*		
+*	-major verion-
+*		indicates significant change in	structure
+*		for database abstraction via class
+*
+*	-minor version-
+*		indicates addition of file/library consruct 
+*		or moderate change or additionto any core 
+*		function or construct
+*
+*	-sub-minor version-
+*		indicates minor bug fix or minor change to 
+*		core function or construct		
+*
+*
+*	Backwards compatibility -will- be maintained!
+*	However, as elements are phased out or removed
+*	as 'core' elements of the library, backwards 
+*	compatibility during library updates may require
+*	the includsion of specific non-core or outdated
+*	component files
+*	
+*
+\***************************************************/
+
+
+/***************************************************\
+*					CHANGE LOG	
+----------------------------------------------------
+4.0.2 Release Notes 05/16/2022
+---------------------------------------------------
+fixed database::OnError to report errors properly.
+
+----------------------------------------------------
+4.0.1 Release Notes 04/27/2022
+---------------------------------------------------
+added captcha::SetFontSize and captcha::GetFontSize to suport better text rendering with larger captcha images
+
+----------------------------------------------------
+4.0.0 Release Notes 03/15/2022
+---------------------------------------------------
+now under official source control via GIT
+
+----------------------------------------------------
+3.17.6 Release Notes 03/14/2022
+---------------------------------------------------
+Updated email::TempalteMail to take an additional parameter options, as a catchall for other data;
+Updated email::TempalteMail to be able to use SMTP auth when using PHPmailer
+Updated email::SetEmail to take optional 3rd Options paramenter
+Added email::GetEmailOptions to retrieve these options
+
+
+----------------------------------------------------
+3.17.5 Release Notes 03/13/2022
+---------------------------------------------------
+Updated form::MakeWYSIWYG (and related functions) to accept optional 4th parameter for $additional_directoives
+
+----------------------------------------------------
+3.17.4 Release Notes 10/28/2021
+---------------------------------------------------
+Updated misc PHP7.X compatability pieces 
+
+----------------------------------------------------
+3.17.3 Release Notes 08/23/2021
+---------------------------------------------------
+updated wysiwyg::MakeWYSIWYG3 to list the theme_advanced_styles for sub-modes (e.g. where class might be assigned from a popup...)
+
+----------------------------------------------------
+3.17.2 Release Notes 05/03/2021
+---------------------------------------------------
+Support for passing a callable fucntion to email::SetMailer() for custom mailer types
+
+----------------------------------------------------
+3.17.1 Release Notes 12/23/2020
+---------------------------------------------------
+Updated misc PHP7.X compatability pieces 
+
+----------------------------------------------------
+3.16.1 Release Notes 12/10/2020
+---------------------------------------------------
+Updated base_googlemap to use google maps api v3.
+Added base_googlemap_v2 fior backwards compatability if ever needed/if any applicaitons still need/can use API v2
+
+----------------------------------------------------
+3.15.9 Release Notes 09/16/2020
+---------------------------------------------------
+Updated base_googlemap::AddMarker to use custom image height and width if provided.
+
+----------------------------------------------------
+3.15.8 Release Notes 09/03/2020
+---------------------------------------------------
+Updated email::TemplateMail to properly handle adding HTML headers when existing headers were also provided
+
+
+----------------------------------------------------
+3.15.7 Release Notes 05/28/2020
+---------------------------------------------------
+Added Catcha::SetTextColor and captchas::GetTextColor
+
+----------------------------------------------------
+3.15.6 Release Notes 09/18/2019
+---------------------------------------------------
+Updated Email::TempalteMail to preoeprtly handlye $to as an aray or comma separated list for all mailers.
+
+----------------------------------------------------
+3.15.5 Release Notes 09/13/2019
+---------------------------------------------------
+Added dbrow::UpdateData - makes an update to database column for this item w/o pushing the entire record (like dbrow::Update) for cases where an object migth not have the most current copy of all of the data/might not be the authoratative record.
+
+----------------------------------------------------
+3.15.4 Release Notes 08/26/2019
+---------------------------------------------------
+updated html::ProcessTemplate() to escape # character in conditionnal tags for preg functions to work properly.
+
+----------------------------------------------------
+3.15.3 Release Notes 01/17/2019
+---------------------------------------------------
+corrected html::ProcessTemplate() to peroply remove open/close each tags
+
+----------------------------------------------------
+3.15.2 Release Notes 12/13/2018
+---------------------------------------------------
+updated html::ProcessTemplate() to accept optinal 3rd paramater $process_conditionals (default=yes) to allow turning off new conditional procesing) 
+
+----------------------------------------------------
+3.15.1 Release Notes 12/06/2018
+---------------------------------------------------
+updated html::ProcessTemplate and email::TemplateMail for suport of conditionals.  Conditionals basically depend on <replace/>  structure; when used in conjuntion with email templates (recommended / only intentioanlly suported applicaiton, structure for suported conditionals looks like this:)
+     <if replace/>   .....   </if replace/>
+     <if !replace/>   .....   </if !replace/>
+     <each replace_array/>   .....   
+	       <KEY/> is suported.
+	       <replace_array_subvalue/> where replace_array_subvalue is an attribute of replace_array[KEY]
+	 </each !replace_array/>
+
+added email::ConvertTemplateReplacements() function in suport of nested values.
+     $params['x']=array('foo'=>'bar','fa'=>'baz');
+         becomes....
+     $replace['<x/>']=array('foo'=>'<bar/>','fa'=>'<baz/>');
+
+consider also suporting:
+     <item[index]/>
+     <item[index][attribute]/>
+     <if foo='bar'/>
+     <else if foo='baz'/>
+     <else/>
+     </if foo>
+      OR: switch/cases for the above....
+
+/***************************************************\
+*					CHANGE LOG						*
+
+----------------------------------------------------
+3.14.2 Release Notes 12/04/2018
+---------------------------------------------------
+updated html::ProcessTemplate to respond to conditionals of this pattern: <if boolean>do this</if boolean>
+
+----------------------------------------------------
+3.14.1 Release Notes 11/30/2018
+---------------------------------------------------
+Added logger class for simple built-in logging utilities.  (BETA)
+
+----------------------------------------------------
+3.13.13 Release Notes 8/9/2018
+---------------------------------------------------
+Added date::IsValid() to easily filter out dates with "null" date from database
+
+----------------------------------------------------
+3.13.12 Release Notes 11/20/2017
+---------------------------------------------------
+Updated DBRow::InitByKeys and DBRow::CreateFromKeys to accept optinal 3rd parameter $add_where to suply additional conditions aside from just basic key value pairs.
+
+----------------------------------------------------
+3.13.11 Release Notes 08/18/2017
+---------------------------------------------------
+Added wysiwyg::SetOnGetCleanContent() to all a global callback to be set whenever wysiwyg::GetCleanContent() is called
+
+----------------------------------------------------
+3.13.10 Release Notes 08/09/2017
+---------------------------------------------------
+Added Imaging::GetContrastColor() to determine if white or black text will render better over give hex background.
+
+----------------------------------------------------
+3.13.9 Release Notes 06/12/2017
+----------------------------------------------------
+Updated BaseGoogleMap::IncludeJSFiles to use // protocol (http  or https) for include JS files.
+
+----------------------------------------------------
+3.13.8 Release Notes 01/30/2017
+----------------------------------------------------
+Epdated email::TemaplteMail to return the result of send function
+
+----------------------------------------------------
+3.13.7 Release Notes 11/10/2016
+----------------------------------------------------
+Epdated email::TemaplteMail to handle copmma-separated to field proeprly when PHP mailer is used.
+
+----------------------------------------------------
+3.13.6 Release Notes 10/24/2016
+----------------------------------------------------
+Added email:SetMailer(), email:GetMailer() and suport for using PHPMailer library for HTML/attachemnt emails
+   - To use, include PHPMailer library and call email::SetMailer('PHPMAILER') on a global scope.
+
+----------------------------------------------------
+3.13.5 Release Notes 8/10/2016
+----------------------------------------------------
+Added ImageMagick::Debug() and suport for debugging image magick commands
+
+----------------------------------------------------
+3.13.4 Release Notes 5/31/2016
+----------------------------------------------------
+Updated dbrowset::CheckSortOrder() to handle non numberic keys properly
+
+----------------------------------------------------
+3.13.3 Release Notes 8/24/2015
+----------------------------------------------------
+Updated email::TempalteMail() to take additional optinal parameter for retrun path and to pass return path along to mail functions
+
+----------------------------------------------------
+3.13.2 Release Notes 7/31/2015
+----------------------------------------------------
+Updated _naivgation::IsURLLocal() to support optional 2nd boolean paramater if subdomains to be treated as local or not (default = yes)
+
+----------------------------------------------------
+3.13.1 Release Notes 7/31/2015
+----------------------------------------------------
+Added fUpload file & class for flash-based uploader
+Moved JUpload and fUpload assets into library (?)
+
+----------------------------------------------------
+3.12.8 Release Notes 12/02/2014
+----------------------------------------------------
+Added browser::IsIOS()
+
+----------------------------------------------------
+3.12.7 Release Notes 06/09/2014
+----------------------------------------------------
+Updated Form class functions relate to selected boxes to treat $params['strict'] Form::DRawSelect and Form::DrawSelctFromSQL as a flag to be passsed along to _in_array() call in option drawing functions to do strict (Type-safe) comparison for SELECTED items
+
+----------------------------------------------------
+3.12.6 Release Notes 03/12/2014
+----------------------------------------------------
+Added dataabse::SetOnQuery() and dataabse::OnQuery() callback setter/router
+
+----------------------------------------------------
+3.12.5 Release Notes 02/20/2014
+----------------------------------------------------
+updated wysiwyg class to allow specification of file browser callback file
+
+----------------------------------------------------
+3.12.4 Release Notes 02/13/2014
+----------------------------------------------------
+added html::SelfCloseTags() and html::SetSelfCloseTags() functions to help with validation for transitional doc type
+update form funtions to check if tas should self close
+----------------------------------------------------
+3.12.3 Release Notes 02/12/2014
+----------------------------------------------------
+updated email::ValidateEmail to skip TLD check; DNS check would take care of this sufficiently
+
+----------------------------------------------------
+3.12.2 Release Notes 12/10/2013
+----------------------------------------------------
+updated wysiwyg class and form::MakeWYSIWYG to accept paramter to disable file uploads
+
+----------------------------------------------------
+3.12.1 Release Notes 11/21/2013
+----------------------------------------------------
+updated wysiwyg class to support wysiwyg editor version specification specically to support using tinymce 4.X.  This upgrade is partial/incomplete and requires additional attenion.
+
+----------------------------------------------------
+3.11.9 Release Notes 09/23/2013
+----------------------------------------------------
+updated graph::DrawDataLines() to support 'dotted' line_style fore series
+updated graph::DrawDataPoints() to support 'dotted' line_style fore series
+
+----------------------------------------------------
+3.11.8 Release Notes 12/19/2012
+----------------------------------------------------
+updated email::TemplateMail() to use simple MIME email headers instead of mim_email class if no attachments (may require further review and/or update for attachments, and/or to further deprecate usage of MIME classes)
+
+----------------------------------------------------
+3.11.7 Release Notes 08/07/2012
+----------------------------------------------------
+added email::HTMLtoText() function for auto-HTML to text conversion & external use.
+
+----------------------------------------------------
+3.11.6 Release Notes 08/06/2012
+----------------------------------------------------
+Updated SIMPLE_LINK mode in form::MakeWYSIWYG() to allow/nort disable link/unlink buttons
+
+----------------------------------------------------
+3.11.5 Release Notes 05/04/2012
+----------------------------------------------------
+Updated ImageMagick::CheckColorProfile() to allow sRGB
+
+----------------------------------------------------
+3.11.4 Release Notes 04/24/2012
+----------------------------------------------------
+Added Database::Disconnect() function (alias for mysql_close()
+
+----------------------------------------------------
+3.11.3 Release Notes 03/13/2012
+----------------------------------------------------
+Updated cookie::SetCookie to set for #days as expected (rather than # hours as it was implemented)
+
+----------------------------------------------------
+3.11.2 Release Notes 03/09/2012
+----------------------------------------------------
+Updated imaging::Resize and imagaing::ResizeCropped to chmod the image to 0644 when done under GD mode to fix issue seen in some OS configurations with end thumb not being readable
+
+----------------------------------------------------
+3.11.1 Release Notes 01/05/2012
+----------------------------------------------------
+Added browser class/file for user agent and other browser/client detection functions
+
+----------------------------------------------------
+3.10.1 Release Notes 12/16/2011
+----------------------------------------------------
+Updated cookie class to use $_COOKIES superglobal and otherwise fix operation.
+
+----------------------------------------------------
+3.9.8 Release Notes 10/21/2011
+----------------------------------------------------
+Updated image_graph::DrawDataLines to support 'bar' seriess
+
+----------------------------------------------------
+3.9.7 Release Notes 09/19/2011
+----------------------------------------------------
+Updated jUpload::ImageMode to use the correct parameters for jumploader to affect resize before upload
+
+----------------------------------------------------
+3.9.6 Release Notes 08/22/2011
+----------------------------------------------------
+Added file::FileNameNoCache utility function
+Updated _navigation::Redirect to use php/header redirect if headers not yet output.
+Updated imaging::ResizeCached to unlink the current thumb if it exists (to avoid file permissions questions on timestamp-rethumb situations)
+Updated DBRow::Update to use === check for NULL on values to avoid "can't be null" mysql error unless explicitly NULL
+
+----------------------------------------------------
+3.9.5 Release Notes 06/29/2011
+----------------------------------------------------
+Updated File::Upload to check for CMYK images on upload and auto-convert to RGB
+Added Imaging::CheckColorProfile to support CMYK testing/conversion
+Added ImageMagick::CheckColorProfile to support CMYK testing/conversion - Image Magick actually does the work.
+
+----------------------------------------------------
+3.9.4 Release Notes 05/06/2011
+----------------------------------------------------
+Updated Imaging::Crop to also use +repage when using imagemagick to fix issues for cropping gifs whereby canvas was not resized by crop
+
+----------------------------------------------------
+3.9.3 Release Notes 04/26/2011
+----------------------------------------------------
+Updated Imaging::CropExact to use +repage when using imagemagick to fix issues for cropping gifs with offest (and no gravity) whereby canvas was not resized by crop
+
+----------------------------------------------------
+3.9.2 Release Notes 03/24/2011
+----------------------------------------------------
+Updated DBRowSet::Retrieve to utilize MakeDBSafe() on the primary to account for 's in the primary key value 
+Updated DBRowSet::CreateFromKeys to utilize MakeDBSafe() on the primary to account for 's in the primary key value if needing to create the item
+
+----------------------------------------------------
+3.9.1 Release Notes 03/06/2011
+----------------------------------------------------
+Added Database::Reconnect() - function to reconnect to previoulsy named connection
+Added Database::StoreConnection() - function to store database connection information
+Added Database::GetQueryCount() - function to retrieve # of queries performed
+Updated database::connect() to take optional 6th parameter 'name' to store connection name for future Reconnect()
+Updated database::connect() to StoreConnection() if given a name for the connection
+
+----------------------------------------------------
+3.8.10 Release Notes 02/07/2011
+----------------------------------------------------
+Updated Text::LimitWords to take optional 4th parameter 'add_truncated', which if provided is appended to returned string if string has been truncated from original string
+
+----------------------------------------------------
+3.8.9 Release Notes 01/25/2011
+----------------------------------------------------
+Repaired Error in form::MakeWYSIWYG whereby "styleselect" was disabled in FULL/ADVANCED default mode  corrected to disable "formatselect" in FULL/ADVANCED default mode
+
+----------------------------------------------------
+3.8.8 Release Notes 01/05/2011
+----------------------------------------------------
+updated graph::CalculateMinMax() to cast items as float before checking min/max to fix mismatch between graph and point bounds based on loose typing in PHP (if, e.g., the # contains a comma)
+
+----------------------------------------------------
+3.8.7 Release Notes 11/30/2010
+----------------------------------------------------
+Updated googlemap::AddMarker() (marksers system) to support custom marker sizing implicitly.
+
+----------------------------------------------------
+3.8.6 Release Notes 11/23/2010
+----------------------------------------------------
+Updated calendar::PopUpCalendarField to use document.getElementById in referencing input obtect to attach popup calendar to, to make it work w/ stricter doctype specification
+Updated html::thumbImages() to work as expected if $refurl['path'] happens to be '/'
+----------------------------------------------------
+3.8.5 Release Notes 10/28/2010
+----------------------------------------------------
+Updated Text::LimitWords() to take optional third parameter - character limit.  If provided, text will be cut off at number of words AND charater limit.  # words can be -1, w/character limit to ONLY limit by characters.
+
+----------------------------------------------------
+3.8.4 Release Notes 10/28/2010
+----------------------------------------------------
+Updated imaginge::ResizeCropped() to increase accuracy of end sizing by making a better intermediate size, through more accurate aspect ration calculation 6 order of precision instead of previous 1
+
+----------------------------------------------------
+3.8.3 Release Notes 10/21/2010
+----------------------------------------------------
+Updated html::ThumbImages() to act on images that have height AND/OR width (both not required)
+
+----------------------------------------------------
+3.8.2 Release Notes 09/07/2010
+----------------------------------------------------
+Fixed captcha to call captcha::AutoClean() everytime captcha::GetImage() is called w/o 'opt' parameter to more auotmatically clean old captcha images out (was only being called on Draw() before).  now called every time we draw a cpatcha image for display.
+
+----------------------------------------------------
+3.8.1 Release Notes 08/26/2010
+----------------------------------------------------
+Fixed Imaging::JCrop to properly handle $initial can be passed with (x,y,h,w) or (x,y,x2,y2)
+
+----------------------------------------------------
+3.8.0 Release Notes 07/22/2010
+----------------------------------------------------
+Added Imaging::JCrop support
+Added Imaging::CropExact() function for precision cropping
+Updated html::ThumbImages() to check correct max height/width, and verify thumb existance before replacing text, also to check that/deal with base url of the site =/!= base url of the image
+Added Imaging::SetQuality() and Imaging::GetQuality() and jpg creation gd/imagemagick responding to quality parameter
+upcated wysiwyg::MakeWYSIWYG() to allow all elements by default **Need to add override for this**
+Added Graph::FormatValue() to support override for custom processing of value/label/etc formatting
+Updated Graph::DrawAxisLabels() to use formatted value (label) for axis label instead of $pos
+Added support for Graph::hi_low parameter, to flip Y axis vertically
+Updated _navigation::RestorePostVars() to clear session'ed stored post vars after they are restored.
+Added Session::SessionIsSet()
+Added Session::SessionUnSet()
+Updated DBRow::CreateFromKeys() to create the item w/ provided primary key if primary key was one of the keys
+Updated DBRow::ValidateUnique() to accept second optional parameter $where - optional contxt for the unique check
+Added utlitity class Timer in timer.php (NOT default included in lib.php.inc)
+Updated imaging::ResizeCached() to check not only existance of target but also timestampo to determine if it should thumb/re-thumb
+Added Imaging::Reflect() and Added Imaging::ReflectCached() to provide for image reflection
+Updated DBRowSet::Rotate() to account for # items rotated if != 1 in setting session index for next display
+Updated Database::backup() to output to file as it goes (instead of storing to buffer) to prevent memory overflow problems w/ larger data sets
+Added text::GenerateCode() to provide service for random code generation
+Updated DBRow::Update() to enter NULL into database (instead of 'NULL') if NULL set as value for item **NOTE MAY NEED TO CHANGE THIS ~ WHAT ABOUT 'NULL' desired as an entry?**
+Updated Form::DrawDateInput() to acceept optional 4th parameter for additional JS to be called on click of the calendar link
+Updated Calendar::PopUpCalendarField() to acceept optional 8th parameter for additional JS to be called on click of the calendar link
+Updated Calendar::PopUpCalendarField() to invoke a unique JS calendar object (based on field name) each time calendar input is drawn, to avoid some of the issues of having a sharted calendar object invoked from multiple locations
+Updated WYSIWYG::GetCleanContent() to NOT call (updated) wysiwyg::ProtectEmail()
+Updated DBRow::ValidateUnique() to call MakeDBSafe on items used in ValidateUnique() calls.
+Updated DBRow::InitByKeys() to call MakeDBSafe on values to be used in query
+Updated file::Upload() to treat 0 byte error as file too large error (typically the case....)
+Updated file::Upload() to propertly report errors in $_FILES[] when move_uploaded_file() fails
+Added base_Calendar::ExtractTime() for more granular parsing of proprietary DB time
+Updated base_Calendar::TranslateTime() to support old processing of ExtractTime() and/or provide default wrapper for commom usage
+Added PoCo Technologies LLC header to each file in library.
+
+----------------------------------------------------
+3.7.5 Release Notes 10/12/2009
+----------------------------------------------------
+Updated file::GetExtension() to return last part of file name (in case of .foo.bar.fa.la)
+Updated file::GetFilesInDirectory() to use File::GetExtension()
+Updated date::date() to restrict warning output on mktime function call
+Updated Email::TemplateMail() to remove striptags() for non-html templates
+Added Graph::AutoColor() function for automatic distinct color per series
+Updated jUpload::DefaultProcess() to accept optional 3rd parameter 'report' to allow disabling of 'success' report
+Updated jUpload::Draw() to only chmod if target file exists (although chmod not really necessary.)
+Updated DBRow::RetrieveRelated() to not include -1 unless empty array.
+Added DBRow::GatherRelated() for default re-gathering of related via form submission
+Added DBRow::SaveRelated for default saving off of gathered related items
+Added DBRow::GatherPrice() to support commonly required gather proocessing
+Added DBRow::ValidateURL() for commonly required validation processing (add http:// if not in the field)
+Updated File::RemoveIllegalCharacters() to use mod_rewrite::ToURL() to be more robust in which characters are caught.
+Updated wysiwyg class to support custom modes 
+Updated base Calendar class to support optional min_rows member (e.g. to force all months to utilize same # of rows
+Updated mod_rewrite::ToURL() to allow {a-z,A-Z,0-9} by default
+
+----------------------------------------------------
+3.7.4 Release Notes 07/14/2009
+----------------------------------------------------
+Updated jUpload class to support additional callback functions, specifically for completion of uploading.
+Updated _navigation::GetBaseURL() to account for https/http when SERVER SSL='off'
+Updated php class to correct for issues in the include all functions related to types and recursive searching
+Updated mime_email::build_message() to include mails -f return path if $this->return_path specified to support setting return path for bounces.
+----------------------------------------------------
+3.7.3 Release Notes 04/24/2009
+----------------------------------------------------
+Updated calendar::PopUpCalendarField() to include style='z-index:10000' and class ='popup_calendar_container'
+Added DBRow::RetrieveRelated() function for retrieving list of ids/objects based on input criteria
+Updated DBRow Pagination related functions to remove warning messages if limit or num available equal 0
+Updated wysiwyg::MakeWYSIWYG() function to support built in "SIMPLE_LINK" level
+Updated jUpload::Draw() function to use propper parameter in chmod to prevent erronous warning messages and check for existance of file before thrying to chmod it
+Updated jUpload::DefaultProcess() to accept 0 parameters - 'path' defaults to ''
+Added DBRow::CopyTo() and DBRow::Copy() functions for copying object (attributes)
+Updated DBRow::DoAction() function for proper bracketing of additional state functions
+Updated DBRow::GetIndexOf() function to query for * instead of just primary to alleviate unpredicted results order and therfore incorrect return value
+
+----------------------------------------------------
+3.7.2 Release Notes 03/24/2009
+----------------------------------------------------
+Added _navigation::PreservePostVars() for temporarily storing POST on redirect (or otherwise)
+Added _navigation::RestorePostVars() for restoring POST after redirect (or otherwise)
+Updated DBRow::CheckSortOrder() to accept additional, optional third parameter - reference field allowing sort order to be set based on order other than order field
+Updated file::RemoveIllegalCharacters() to accept aditional, optional third parameter specifying what charater we should replace illegal charactes with
+Updated file::Upload() extension checking logic to faster, more contemporary approach
+Updated HTML::ThumbImages() logic to correctly handle www/non-www domain path in thumbing/path replacement logic
+Changes to wysiwyg wrapper including supporting default mode, debug flag, extend_valid_elements item, more.
+Added image_graph capabilities to support graph
+
+----------------------------------------------------
+3.7.1 Release Notes 02/17/2009
+----------------------------------------------------
+jupload interface cleanup - javascript error reporting logic
+
+----------------------------------------------------
+3.7.0 Release Notes 02/17/2009
+----------------------------------------------------
+Updated Form::PopUpCalendarField() function to allow empty/null date 
+Updated Date::GetDays() function making third paramater (include) optional/default=''
+Updated email::TemplateMail() to look for a .txt template with same name as .html template when an HTML template is provided, to be used for plain text part.  If not available, plain txt part = simple strip tags of html version
+Updated DBRowSEt::SetFlag() function to also/automatically set the flag for all children
+Added DBRowset::GetIndexOf() function, used to find an item's position/index in the list by id
+Added check in file.php to not redeclare rmdirr() if it already exists (php5, other libraries, etc)
+Added TinyMCE WYSIWYG abstraction to core library via Form, WYSIWYG and HTML classes/namespaces
+Added GD cropped thumbnailing support
+Minor Graphing update, allowing point->innerhtml to be displayed instead of point->value when drawing a point
+Added Session::SetIDName() function to set the session name
+Added .jpeg to list of basic acceptable image types to be preserved or allowed in image magick thumbnailing
+Updated Text::FormatPrice() function to accept cents and sign flags to determine if we should format sin dollars or dollars and cents, and if sign is included, where it should go {-1.00 vs 1.00(-)}
+Updated File::RemoveIllegalCharacters function to accept second optional parameter, "replace_with" (default='-') to control what bad characters will be replaced with.
+----------------------------------------------------
+3.6.1 Release Notes 10/28/2008
+----------------------------------------------------
+Updated Email::TemplateMail() function to deal with attachments
+Updated DBRow::ValidateUnique() function to accept an array or comma separated list for more than one parameters
+
+----------------------------------------------------
+3.6.0 Release Notes 10/28/2008
+----------------------------------------------------
+Added Flagging for DBForm (DBRow, DBRowSet) to accomodate switches during editing/processing/anytime
+Added GatherDate() to DBRow to be used for default date parsing/processing during GatherInputs()
+Added DATE Round() function to deal w/ default time/timestamp
+Updated _navigation::Redirect to accept 2nd parameter - additional parameters (array or text) to append to url provided as param 1
+Updated Text::FormatPrice() to accept additional parameters controling if cents should be included (no by default) and to deal with signed values e.g. $-45.01 > possibly > $45.01 (-)
+
+----------------------------------------------------
+3.5.2 Release Notes 10/10/2008
+----------------------------------------------------
+Updated JS inclusion logic to track included files 
+Added FILE show images in directory shortcut function
+Updated Captca to remove php warning for non-allocable color
+
+----------------------------------------------------
+3.5.1 Release Notes 9/11/2008
+----------------------------------------------------
+Added Output Buffering Wrapper in HTML namespace
+Added JS/RSS Cleaning Functions in HTML namespace
+Added PHP Dump/Info fucntoins and LARGEIMAGES config seetings in php namespace
+Added File, Calendar and Time Field Drawming to form namespace
+Updated Calendar field suppot in calendar namespace
+
+
+----------------------------------------------------
+3.5.0 Release Notes 9/8/2008
+----------------------------------------------------
+Baselined change log with graph, capchta, recaptha support
+
+Older versions not documented - version baselining based on 
+
+v3.5.0 - baseline versioning
+v3.4.x - added captcha support (captcha.php)
+v3.3.x - added recaptcha support  (recaptcha.php)
+v3.2.x - added php configuration support; facilitate ex/ (DBRowEx,DBRowSEtEx) architecture for end-usage (php.php) 
+v3.1.x - added graph support  (graph.php)
+v3.0.0 - heirarchy evolution - DBRow and DBRowSet inherit from DBForm for shared functionality
+			map,calendar, archive
+v2.0.x - evolution to DBRow and DBRowSet; phasing out of DBTableInterface
+	   archive 
+	   RSS
+	   imaging
+	   map
+	   calendar
+
+v1.0.x - stable refiuned library and DBTableInterface architecture, additional core components
+	    file
+	    navigation
+	    form
+	    html text
+
+v0.0 - birth of library and DBTableInterface
+
+*													*
+\***************************************************/

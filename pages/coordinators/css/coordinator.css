@@ -1,0 +1,4 @@
+.admin_only{display:none !important;}
+
+DIV.dashboard_filters{margin:15px 0px;background:transparent;border:none;color:#000000}
+DIV.dashboard_filters LABEL{margin:0px 10px;font-weight:normal;color:#000000}
