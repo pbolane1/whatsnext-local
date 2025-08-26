@@ -40,6 +40,9 @@
 				</div>
 			</div>
 			
+			<!-- Middle Spacer -->
+			<div class="agent_info_spacer"></div>
+			
 			<!-- Right Side - Company Logo and Address -->
 			<div class="agent_info_right">
 				<?php if($agent->Get('agent_image_file2')): ?>

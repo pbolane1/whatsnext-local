@@ -494,10 +494,18 @@ BODY.home .content_inner{background:transparent;margin:35px 0px 0px;padding: 0px
 	color: #CCCCCC;
 }
 
+.agent_info_spacer {
+	flex: 2;
+	min-width: 200px;
+}
+
 .agent_info_right {
-	flex: 1;
-	min-width: 300px;
+	flex: 0 0 auto;
+	min-width: 129px;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .company_logo {
@@ -522,16 +530,25 @@ BODY.home .content_inner{background:transparent;margin:35px 0px 0px;padding: 0px
 	.agent_info_content {
 		flex-direction: column;
 		text-align: center;
+		align-items: center;
 	}
 	
 	.agent_info_left {
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
+		width: 100%;
+	}
+	
+	.agent_info_spacer {
+		display: none;
 	}
 	
 	.agent_info_right {
 		text-align: center;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
 	}
 }
 
