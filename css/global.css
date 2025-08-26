@@ -441,6 +441,100 @@ BODY.home .content_inner{background:transparent;margin:35px 0px 0px;padding: 0px
 
 .site_version{display:none;}
 
+/* Agent Info Section */
+.agent_info_section {
+	background: #3a3a3a;
+	padding: 30px 0px;
+	border-bottom: 1px solid;
+}
+
+.agent_info_content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 30px;
+}
+
+.agent_info_left {
+	flex: 1;
+	min-width: 300px;
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.agent_headshot img {
+	height: 120px;
+	width: auto;
+}
+
+.agent_details {
+	color: #FFFFFF;
+}
+
+.agent_name {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.agent_company {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+.agent_dre {
+	font-size: 14px;
+	margin-bottom: 5px;
+	color: #CCCCCC;
+}
+
+.agent_phone {
+	font-size: 16px;
+	color: #CCCCCC;
+}
+
+.agent_info_right {
+	flex: 1;
+	min-width: 300px;
+	text-align: center;
+}
+
+.company_logo {
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.company_logo img {
+	max-width: 100%;
+	height: auto;
+}
+
+.company_address {
+	color: #FFFFFF;
+	font-size: 14px;
+	line-height: 1.6;
+	text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+	.agent_info_content {
+		flex-direction: column;
+		text-align: center;
+	}
+	
+	.agent_info_left {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.agent_info_right {
+		text-align: center;
+	}
+}
+
 .disclaimer{text-align:center;padding:20px 0px;background:#282828;margin-top:0px;font-size:15px;color:#CCCCCC}
 .content_area .disclaimer{text-align:center;padding:20px 0px;background:transparent;font-size:15px;color:#000000;font-style:italic;}
 
@@ -614,7 +708,7 @@ DIV.filters SELECT{width:100%;border:1px solid #000000;}
 
 
 
-.info_bubble{display:none;position:fixed;top:100px;right:5px;width:400px;border-radius:20px;background:#FFFFFF;border:#1px solid #CCCCCC;box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.75);z-index:2000;padding-bottom:40px;}
+.info_bubble{display:none;position:fixed;top:100px;right:5px;width:400px;border-radius:20px;background:#FFFFFF;border:1px solid #CCCCCC;box-shadow: 0px 0px 15px 2px rgba(0,0,0,0.75);z-index:2000;padding-bottom:40px;}
 .info_bubble_inner{padding:10px;position:relative;min-height:200px;}
 .info_bubble_inner .info_bubble_heading{font-size:18px;text-align:center;}
 .info_bubble_inner .info_bubble_content{padding:10px;margin-bottom:20px}
