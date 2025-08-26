@@ -200,3 +200,40 @@ BEGIN UPDATES
 - Maintains consistency with existing logout functionality
 
 ---
+
+### ARCHIVE CSV AND EMAIL TEMPLATE ISSUES - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Bug Fix and Enhancement  
+**Status:** Partially Resolved  
+**Priority:** HIGH  
+
+**Summary:** Identified and partially resolved issues with the archive transaction functionality, specifically CSV file attachments and email template image display.
+
+**Key Issues Identified:**
+- CSV files not attaching to archive emails due to temp directory permissions
+- Email template images not displaying due to custom template syntax
+- Archive functionality sending emails but missing critical visual elements
+
+**Resolutions Applied:**
+- Fixed temp directory permissions allowing CSV file creation and attachment
+- Replaced custom `<if user_image_file/>` template syntax with standard HTML
+- Added graceful fallback for image display with onerror handling
+- Maintained existing email functionality (agent + coordinator recipients)
+
+**Current Status:**
+- ✅ CSV attachment functionality working
+- ❌ Email template image display still not functioning
+- ✅ Email sending and opt-out links working
+- ✅ Archive process completing successfully
+
+**Action Required:** Further investigation needed for image display issue  
+**Files Modified:** include/classes/c_user.php, email_templates/email_activity_log.html  
+**Files Created:** [CSV-Email-Template-Issues.md](Details/CSV-Email-Template-Issues.md)
+
+**Technical Details:**
+- Temp directory permissions were preventing CSV file creation
+- Custom template engine syntax not being processed by email system
+- Image variables properly populated but template rendering failing
+- Requires additional debugging to identify root cause of image display failure
+
+---
