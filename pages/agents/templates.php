@@ -10,7 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='agent'>
-	<?php $__headline__=$agent->IsLoggedIn()?'Manage Templates':'Login';?>
+	<?php $__headline__=$agent->IsLoggedIn()?'Manage Templates':'Agent Login';?>
 	<?php include ('modules/header.php');?>
 	<?php info_bubble::ListAll('TEMPLATES','AGENT'); ?>
 	<div class='content_area'>	

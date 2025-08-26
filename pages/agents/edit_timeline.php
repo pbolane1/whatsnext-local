@@ -10,7 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='x_agent buyer'>
-	<?php $__headline__=$agent->IsLoggedIn()?$agent->Get('agent_name'):'Login';?>
+	<?php $__headline__=$agent->IsLoggedIn()?$agent->Get('agent_name'):'Agent Login';?>
 	<?php include ('modules/header.php');?>
 	<?php info_bubble::ListAll('TIMELINE','AGENT'); ?>
 	<div class='content_area'>	

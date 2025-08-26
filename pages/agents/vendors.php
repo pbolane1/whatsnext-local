@@ -10,7 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='agent'>
-	<?php $__headline__=$agent->IsLoggedIn()?'Vendors & Other Sidebar Items':'Login';?>
+	<?php $__headline__=$agent->IsLoggedIn()?'Vendors & Other Sidebar Items':'Agent Login';?>
 	<?php include ('modules/header.php');?>
 	<?php info_bubble::ListAll('VENDORS','AGENT'); ?>
 	<div class='content_area'>	

@@ -16,7 +16,7 @@
 	
 </head>
 <body class='agent DEMO'>
-	<?php $__headline__=$agent->IsLoggedIn()?$agent->Get('agent_name'):'Login';?>
+	<?php $__headline__=$agent->IsLoggedIn()?$agent->Get('agent_name'):'Agent Login';?>
 	<?php include ('modules/header.php');?>
 	<div class='content_area'>	
 		<div class='container'>

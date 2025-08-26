@@ -11,7 +11,7 @@
 </head>
 <body class='x_agent buyer'>
 	<?php 
-		$__headline__='Login';
+		$__headline__='Agent Login';
 		if($agent->IsLoggedIn())
 		{
 			$__headline__="Terms Of Contract";
