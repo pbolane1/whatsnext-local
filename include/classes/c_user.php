@@ -1392,7 +1392,7 @@ class user extends DBRowEx
 			
 		echo("<div id='login_div' style='display:".(($action!='send_pwd' or $this->msg)?'block':'none')."'>");
 		echo("<div class='login_form card'>");
-		echo("<div class='card_heading user_bg_color2'><h3>Log In</h3></div>");
+		echo("<div class='card_heading user_bg_color2'><h3>Client Login</h3></div>");
 		echo("<div class='card_body'>");
 		if($action=='send_pwd' and $this->msg)
 			echo('<div class="error">Please check your email for details on resetting your password.</div>');

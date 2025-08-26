@@ -487,7 +487,7 @@ class user_contact extends DBRowEx
 
 		echo("<div id='login_div' style='display:".(($action!='send_pwd' or $this->msg)?'block':'none')."'>");
 		echo("<div class='login_form card'>");
-		echo("<div class='card_heading user_contact_bg_color2'><h3>Log In</h3></div>");
+		echo("<div class='card_heading user_contact_bg_color2'><h3>Client Login</h3></div>");
 		echo("<div class='card_body'>");
 		if($this->GetError('login'))
 			echo('<div class="error">'.$this->GetError('login').'</div>');

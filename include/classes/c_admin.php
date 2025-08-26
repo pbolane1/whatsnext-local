@@ -372,6 +372,10 @@ class admin extends DBRowEx
 			return;
 		}
 
+		echo("<div class='card'>");
+		echo("<div class='card_heading' style='background:#000000;'><h3 style='color:#FFFFFF;'>Admin Login</h3></div>");
+		echo("<div class='card_body'>");
+		
 		if($this->GetError('login'))
 			echo('<div class="error">Wrong email or password.</div>');
 			
@@ -394,6 +398,9 @@ class admin extends DBRowEx
 		form::DrawSubmit('','Reset Password');
 		form::End();
 		echo('</div>');
+		
+		echo('</div>'); // Close card_body
+		echo('</div>'); // Close card
 
 	}
 
