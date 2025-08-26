@@ -12,7 +12,7 @@
 <?php	
 	if($agent->IsProxyLogIn())
 	{
-		echo("<div class='proxy_notice'>Managing ".$agent->get('agent_name')." Account</div>");
+		echo("<div class='proxy_notice'>Managing ".$agent->get('agent_name')." Account. <a href='/pages/agents/index.php?action=logout' style='color: #000000; text-decoration: underline; font-weight: bold;'>Exit Account and Return to Coordinator Dashboard</a></div>");
 		javascript::Begin();
 		echo("jQuery(function(){
 			jQuery('BODY').addClass('proxy');	
