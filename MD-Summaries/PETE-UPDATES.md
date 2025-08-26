@@ -319,7 +319,7 @@ BEGIN UPDATES
 - admin/index.php (Admin Login headline + headline variable)
 - admin/modules/header.php (dynamic headline support)
 
-**Files Created:** [Add-User-Type-to-Login.md](Details/Add-User-Type-to-Login.md) - Detailed implementation documentation
+**Files Created:** [Add-User-Type-to-Login.md](Details/pete-ai-fixes/Add-User-Type-to-Login.md) - Detailed implementation documentation
 
 **Benefits:**
 - Improved user experience with clearer login page identification
