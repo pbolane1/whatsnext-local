@@ -3586,6 +3586,9 @@ trait transaction_handler
 	  	$list=$this->GetTimelineItems($params);
 		echo("<div class='print_timeline_items'>");
 		echo("<table>");
+		$property_address = trim($user->Get('user_property_address'), ' -');
+		$address_display = $property_address ? " - ".$property_address : "";
+		echo("<tr class='agent_bg_color1'><th colspan='4'>".$user->GetFullName().$address_display."</th></tr>");
 		echo("<tr class='agent_bg_color1'><th>TO DO</th><th>DUE DATE</th><th>AGENT COMPLETED</th><th>CLIENT COMPLETED</th></tr>");
 		foreach($list->items as $timeline_item)
 		{

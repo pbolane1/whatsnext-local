@@ -97,7 +97,50 @@ BEGIN UPDATES
 ### ARCHIVE CSV HEADER ENHANCEMENT - August 26, 2025
 **Date:** August 26, 2025  
 **Type:** Feature Enhancement  
+**Status:** Completed
+
+**Summary:** Enhanced the archive CSV export functionality to include proper headers for better data organization and readability.
+
+**Key Accomplishments:**
+- Added descriptive headers to CSV export files
+- Improved data structure for better analysis
+- Enhanced user experience when working with exported data
+
+**Action Required:** None - enhancement complete  
+**Files Modified:** Archive export functionality  
+**Files Created:** [ARCHIVE-CSV-HEADER.md](Details/ARCHIVE-CSV-HEADER.md)
+
+---
+
+### PRINT TIMELINE HEADER ENHANCEMENT - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Feature Enhancement  
 **Status:** Completed  
+**Priority:** MEDIUM  
+
+**Summary:** Enhanced the Print Timeline functionality in the agents section to include a descriptive header row showing client name and property address above the existing column headers.
+
+**Key Accomplishments:**
+- Added new header row displaying "[Client Name] - [Property Address]"
+- Improved print layout for better document identification
+- Enhanced user experience when printing timeline documents
+- Cleaned up trailing dashes in property address display
+
+**Technical Details:**
+- Modified PrintTimeline method in t_transaction_handler.php trait
+- Added conditional logic to handle empty property addresses
+- Used colspan='4' to span the new header across all columns
+- Maintained consistent styling with existing headers
+
+**Action Required:** None - enhancement complete  
+**Files Modified:** include/traits/t_transaction_handler.php  
+**Files Created:** [Print Timeline-add header.md](Details/Print Timeline-add header.md)
+
+**Benefits:**
+- Better document identification when printing
+- Professional appearance for client meetings
+- Clear association between timeline and specific property
+- Improved workflow for real estate agents  
 **Priority:** Medium  
 
 **Summary:** Enhanced the transaction archiving functionality to include descriptive headers in CSV exports. When agents archive transactions via dashboard, timeline item, or agent tools, the generated CSV now includes a contextual header row with client name, property address, and archive date.
