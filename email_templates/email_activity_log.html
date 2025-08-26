@@ -23,11 +23,11 @@
 			<div style='background:#FFFFFF'>
 				<div style='margin:0px auto;width:800px;max-width:100%;padding:50px 0px'>
 					<h1 style='font-size:35px;color:#000000'>Congratulations!  <user_property_name/> Has Been Archived</h1>
-					<if user_image_file/>
-						<div style='text-align:center'><img src='<user_image_file/>'></div>
-						<br>
-					</if user_image_file/>
-					<br><br>
+					<div style='text-align:center'>
+						<img src='<user_image_file/>' style='max-width:100%;max-height:300px;' onerror="this.style.display='none';">
+					</div>
+					<br>
+					<br>
 					<div style='font-size:16px;line-height:24px;color:#333333'>
 						Please see the attached activity log for this transaction.
 					</div>
