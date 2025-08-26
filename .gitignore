@@ -62,3 +62,13 @@ pages/coordinators/modules/header.php
 
 # Configuration files with local credentials (don't commit to production)
 include/common.php
+
+# Large database files
+whatsnext_complete.sql
+
+# Temporary files
+cookies.txt
+temp.md
+
+# Docker volumes
+mysql_data/
