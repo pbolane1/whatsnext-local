@@ -16,7 +16,7 @@
 </head>
 
 <body class='buyer'>
-	<?php $__headline__=$user_contact->IsLoggedIn()?'Transaction Timeline':'Login';?>
+	<?php $__headline__=$user_contact->IsLoggedIn()?'Transaction Timeline':'Client Login';?>
 	<?php include ('modules/header.php');?>
 	<div class='content_area'>	
 		<div class='container content_wrapper'>

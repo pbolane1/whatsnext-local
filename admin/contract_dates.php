@@ -10,6 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='admin'>
+	<?php $__headline__=$admin->IsLoggedIn()?'Manage Contract Dates':'Admin Login';?>
 	<?php include ('modules/header.php');?>
 	<div class='content_area'>	
 		<div class='container'>

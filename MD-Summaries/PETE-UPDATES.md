@@ -295,7 +295,7 @@ BEGIN UPDATES
 
 ---
 
-### LOGIN PAGE HEADLINES - USER TYPE SPECIFIC - August 26, 2025
+### ADD USER TYPE TO LOGIN - August 26, 2025
 **Date:** August 26, 2025  
 **Type:** User Experience Enhancement  
 **Status:** Completed  
