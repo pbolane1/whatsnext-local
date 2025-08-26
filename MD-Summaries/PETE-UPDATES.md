@@ -2,10 +2,10 @@
 ----------------------------------------------------------------------------------------------------------------------
 Documentation for implemented features and coding changes.
 Document last updated: August 26, 2025
-Last feature updated: Legacy Buyer Questionnaire Modal Removal
+Last feature updated: Agent Footer Info Section
 
 ### Overview
-This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature are organized by branch in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone.
+This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature are organized by branch in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone. Changes are listed in Reverse Chronological Order
 
 ### BRANCH TRACKING
 **Current Active Branch:** `pete-ai-fixes`  
@@ -98,29 +98,6 @@ BEGIN UPDATES
 **Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Enhanced the Print Timeline functionality in the agents section to include a descriptive header row showing client name and property address above the existing column headers.
-
----
-
-### AGENT FOOTER INFO SECTION - August 26, 2025
-**Date:** August 26, 2025  
-**Type:** Feature Enhancement  
-**Status:** Completed  
-**Priority:** MEDIUM  
-**Branch:** pete-ai-fixes  
-
-**Summary:** Added a new agent information section above the footer disclaimer that displays agent headshot, name, company, DRE#, phone on the left side and company logo with address on the right side.
-
-**Key Accomplishments:**
-- New agent info section with dark background (#3a3a3a)
-- Responsive three-column layout (left content, middle spacer, right logo/address)
-- Agent headshot displays at full height with auto width
-- Company logo and address properly centered and positioned
-- Mobile-responsive design with proper centering on small screens
-- Uses existing agent data fields (headshot, company logo, address)
-
-**Action Required:** None - enhancement complete  
-**Files Modified:** css/global.css, pages/agents/modules/footer.php  
-**Files Created:** [RESTORE-AGENT-FOOTER.md](Details/pete-ai-fixes/RESTORE-AGENT-FOOTER.md)
 
 **Key Accomplishments:**
 - Added new header row displaying "[Client Name] - [Property Address]"
@@ -351,3 +328,24 @@ BEGIN UPDATES
 - Enhanced accessibility and user orientation
 
 ---
+
+### AGENT FOOTER INFO SECTION - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Feature Enhancement  
+**Status:** Completed  
+**Priority:** MEDIUM  
+**Branch:** pete-ai-fixes  
+
+**Summary:** Added a new agent information section above the footer disclaimer that displays agent headshot, name, company, DRE#, phone on the left side and company logo with address on the right side.
+
+**Key Accomplishments:**
+- New agent info section with dark background (#3a3a3a)
+- Responsive three-column layout (left content, middle spacer, right logo/address)
+- Agent headshot displays at full height with auto width
+- Company logo and address properly centered and positioned
+- Mobile-responsive design with proper centering on small screens
+- Uses existing agent data fields (headshot, company logo, address)
+
+**Action Required:** None - enhancement complete  
+**Files Modified:** css/global.css, pages/agents/modules/footer.php  
+**Files Created:** [RESTORE-AGENT-FOOTER.md](Details/pete-ai-fixes/RESTORE-AGENT-FOOTER.md)
