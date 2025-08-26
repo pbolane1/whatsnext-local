@@ -225,10 +225,13 @@ class user extends DBRowEx
 	  	$list->Retrieve();
 
 		$filename=mod_rewrite::ToURL($this->Get('user_name')).'-Activity-Log'.'.csv';
-		$f=fopen(file::GetPath('temp').$filename,'w');
+		$temp_file_path = file::GetPath('temp').$filename;
+		$f=fopen($temp_file_path,'w');
 		
 		// Check if file was opened successfully
 		if($f === false) {
+			// Log error and continue without CSV
+			error_log("Failed to create CSV file: " . $temp_file_path);
 			$f = null;
 		} else {
 			// Add header row with client info and archive date
@@ -242,13 +245,15 @@ class user extends DBRowEx
 			fwrite($f,"\r\n");
 			
 			fwrite($f,"Date/Time".",");
-			fwrite($f,"Action/".",");
+			fwrite($f,"Action".",");
 			fwrite($f,"Performed By".",");
-			fwrite($f,"IP ".",");
+			fwrite($f,"IP".",");
 			fwrite($f,"\r\n");
 		}
+		
 		if(!count($list->items))
 			echo("<tr><td class='emptyset' colspan='100'>There is no activity to display</tr>");	
+		
 		foreach($list->items as $activity_log)
 		{
 			if($f !== null) {
@@ -263,6 +268,7 @@ class user extends DBRowEx
 				fwrite($f,"\r\n");
 			}
 		}
+		
 		if($f !== null) {
 			fclose($f);
 		}
@@ -277,34 +283,29 @@ class user extends DBRowEx
 			$mail_params[$k]=$v;
 		$mail_params['user_property_name']=$this->GetPropertyName();
 		
-		
-		$emails=array();
-		$emails[]=$agent->Get('agent_email');
-		foreach($agent->GetCoordinatorIDs() as $coordinator_id)
-		{
-			$coordinator=new coordinator($coordinator_id);
-			$emails[]=$coordinator->Get('coordinator_email');
-		}
+		// Generate opt-out link for email template
+		$opt_out_url = _navigation::GetBaseURL() . "pages/agents/index.php?action=opt_out&user_id=" . $this->id . "&token=" . md5($this->id . $this->Get('user_email') . 'opt_out');
+		$mail_params['opt_out_link'] = $opt_out_url;
 		
 		$headers=array();
 		$files=array();
 		
-		// Only attach file if it was successfully created
-		if($f !== null && file_exists(file::GetPath('temp').$filename)) {
-			$files[$filename] = file::GetPath('temp').$filename;
+		// Only attach file if it was successfully created and exists
+		if($f !== null && file_exists($temp_file_path)) {
+			$files[$filename] = $temp_file_path;
 		}
 		
-		email::SetMailer('PHPMAILER');
-		foreach($emails as $email)
-			email::templateMail($email,email::GetEmail(),$subject,file::GetPath('email_activity_log'),$mail_params+array('base_url'=>_navigation::GetBaseURL()),'FROM:'.email::GetEmail(),$files);
-
+		// Send email to agent only (not to coordinators to avoid duplicates)
+		$agent_email = $agent->Get('agent_email');
+		if($agent_email) {
+			email::SetMailer('PHPMAILER');
+			email::templateMail($agent_email, email::GetEmail(), $subject, file::GetPath('email_activity_log'), $mail_params+array('base_url'=>_navigation::GetBaseURL()), 'FROM:'.email::GetEmail(), $files);
+		}
 		
 		// Clean up CSV file after emailing
-		if($f !== null && file_exists(file::GetPath('temp').$filename)) {
-			unlink(file::GetPath('temp').$filename);
+		if($f !== null && file_exists($temp_file_path)) {
+			unlink($temp_file_path);
 		}
-
-
 	}
 
 	public function ResetTemplates()
