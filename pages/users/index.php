@@ -61,7 +61,6 @@
 	<?php include ('modules/footer.php');?>
 	<?php include ('../../modules/footer_scripts.php');?>
 	<?php include ('modules/footer_scripts.php');?>
-	<?php include('../../modules/buyer-questionnaire.html'); ?>
 
 
 </body>
