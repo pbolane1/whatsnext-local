@@ -59,3 +59,6 @@ test/
 admin/modules/header.php
 pages/agents/modules/header.php
 pages/coordinators/modules/header.php
+
+# Configuration files with local credentials (don't commit to production)
+include/common.php
