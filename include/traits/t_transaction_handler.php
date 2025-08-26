@@ -1391,24 +1391,33 @@ trait transaction_handler
 			echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Click here to edit contract dates/terms' href='".$this->GetUserURL($user,'edit_user_dates.php')."'><i class='icon fas fa-solid fa-list-alt'></i><span class='text'>Edit Contract Terms</span></a>");
 		}
 
-//		$js2="ObjectFunctionAjaxPopup('Reminder Sent','".get_class($this)."','".$this->id."','ReminderSentConfirmation','NULL','','user_id=".$params['user_id']."',function(){});return false;";
-//		$js="ObjectFunctionAjax('".get_class($this)."','".$this->id."','AgentTools','agent_tools_container','NULL','','user_id=".$params['user_id']."&action=".$user->GetFormAction('send_reminder')."',function(){".$js2."});return false;";
-		$js="ObjectFunctionAjaxPopup('Send Reminder','".get_class($this)."','".$this->id."','SendRemindersPopup','NULL','','user_id=".$params['user_id']."',function(){".$js2."});return false;";
-		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Send notification for past due and upcoming tasks' href='#' onclick=\"".$js."\"><i class='icon fas fa-solid fa-envelope'></i><span class='text'>Send Client Reminder</span></a>");
+	    //$js2="ObjectFunctionAjaxPopup('Reminder Sent','".get_class($this)."','".$this->id."','ReminderSentConfirmation','NULL','','user_id=".$params['user_id']."',function(){});return false;";
+        //		$js="ObjectFunctionAjax('".get_class($this)."','".$this->id."','AgentTools','agent_tools_container','NULL','','user_id=".$params['user_id']."&action=".$user->GetFormAction('send_reminder')."',function(){".$js2."});return false;";
 
+
+		//$js="ObjectFunctionAjaxPopup('Send Reminder','".get_class($this)."','".$this->id."','SendRemindersPopup','NULL','','user_id=".$params['user_id']."',function(){".$js2."});return false;";
+		//echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Send notification for past due and upcoming tasks' href='#' onclick=\"".$js."\"><i class='icon fas fa-solid fa-envelope'></i><span class='text'>Send Client Reminder</span></a>");
+
+
+		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Print Timeline' href='".$this->GetUserURL($user,'print_timeline.php')."' target='_blank'><i class='icon fas fa-print'></i><span class='text'>Print Timeline</span></a>");
+
+		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='See when tasks were completed' href='".$this->GetUserURL($user,'activity_log.php')."'><i class='icon fas fa-chart-line'></i><span class='text'>View activity log</span></a>");
+
+		$js="ObjectFunctionAjaxPopup('Save As New Template','".get_class($this)."','".$this->id."','AgentToolsNewTemplateConfirmation','NULL','','user_id=".$params['user_id']."',function(){});return false;";
+		echo("<a class='".$this->GetDarkerHoverClass()." save_as_new_template' data-toggle='tooltip' title='Save this timeline as a new template' href='#' onclick=\"".$js."\"><i class='icon fas fa-solid fa-save'></i><span class='text'>Save as New Template</span></a>");
+		
 		$js2="document.location='".$this->DirectURL("past.php")."';";
 		$js="ObjectFunctionAjax('".get_class($this)."','".$this->id."','AgentTools','agent_tools_container','NULL','','user_id=".$params['user_id']."&action=".$user->GetFormAction('archive_transaction')."',function(){".$js2."});return false;";
 		$js="if(confirm('Archive this transaction?  This will turn off all reminders (to agent and client), but this transaction can be reviewed and restored at any time by clicking on the &quot;Archived&quot; link at the top of the page')){".$js."}return false;";			
 		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Click when you are finished with this transaction' href='#' onclick=\"".$js."\"><i class='icon fas fa-archive'></i><span class='text'>Archive</span></a>");
 
-		$js="ObjectFunctionAjaxPopup('Save As New Template','".get_class($this)."','".$this->id."','AgentToolsNewTemplateConfirmation','NULL','','user_id=".$params['user_id']."',function(){});return false;";
-		echo("<a class='".$this->GetDarkerHoverClass()." save_as_new_template' data-toggle='tooltip' title='Save this timeline as a new template' href='#' onclick=\"".$js."\"><i class='icon fas fa-solid fa-save'></i><span class='text'>Save as New Template</span></a>");
+		
 
-		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='See when tasks were completed' href='".$this->GetUserURL($user,'activity_log.php')."'><i class='icon fas fa-chart-line'></i><span class='text'>View activity log</span></a>");
+		
 
-		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Print Timeline' href='".$this->GetUserURL($user,'print_timeline.php')."' target='_blank'><i class='icon fas fa-print'></i><span class='text'>Print Timeline</span></a>");
+		
 
-		echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Return to Dashboard' href='".$this->DirectURL()."'><i class='icon fas fa-sign-in-alt'></i><span class='text'>Return to Dashboard</span></a>");
+		//echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='Return to Dashboard' href='".$this->DirectURL()."'><i class='icon fas fa-sign-in-alt'></i><span class='text'>Return to Dashboard</span></a>");
 
 		//$js="ObjectFunctionAjax('".get_class($this)."','".$this->id."','AgentTools','agent_tools_container','NULL','','user_id=".$params['user_id']."&action=inspection',function(){});return false;";
 		//echo("<a class='".$this->GetDarkerHoverClass()."' data-toggle='tooltip' title='' href='#' onclick=\"".$js."\"><i class='icon fas fa-search'></i><span class='text'>Click here if/when you want to book the inspection</span></a>");
