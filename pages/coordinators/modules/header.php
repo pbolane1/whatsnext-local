@@ -9,7 +9,7 @@
 			      <span class="icon-bar"></span>
 			    </button>
 				<div class='logo'>
-				  <a href="/coordinators/"><img src='/images/logo.png'></a>
+				  <a href="/pages/coordinators/"><img src='/images/logo.png'></a>
 				</div>
 			  </div>
 			  <div class="navbar-collapse collapse">
@@ -17,16 +17,16 @@
 <?php
 	if($coordinator->IsLoggedin())			    
 	{
-		echo("<li><a href='/coordinators/index.php'>Dashboard</a></li>");
-		echo("<li><a href='/coordinators/agents.php'>My Agents</a></li>");
-		echo("<li><a href='/coordinators/vendors.php'>Vendors</a></li>");
-		echo("<li><a href='/coordinators/past.php'>Archived</a></li>");
-		echo("<li><a href='/coordinators/templates.php'>Templates</a></li>");
-		echo("<li><a href='/coordinators/settings.php'>Settings</a></li>");
-		echo("<li><a href='/coordinators/index.php?action=logout'>Logout</a></li>");
+		echo("<li><a href='/pages/coordinators/index.php'>Dashboard</a></li>");
+		echo("<li><a href='/pages/coordinators/agents.php'>My Agents</a></li>");
+		echo("<li><a href='/pages/coordinators/vendors.php'>Vendors</a></li>");
+		echo("<li><a href='/pages/coordinators/past.php'>Archived</a></li>");
+		echo("<li><a href='/pages/coordinators/templates.php'>Templates</a></li>");
+		echo("<li><a href='/pages/coordinators/settings.php'>Settings</a></li>");
+		echo("<li><a href='/pages/coordinators/index.php?action=logout'>Logout</a></li>");
 	}
 	else
-		echo("<li><a href='/coordinators/index.php'>Log In</a></li>");	
+		echo("<li><a href='/pages/coordinators/index.php'>Log In</a></li>");	
 ?>
 			    </ul>
 			  </div>

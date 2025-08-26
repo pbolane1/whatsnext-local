@@ -21,9 +21,7 @@ log.txt
 
 # Temporary files
 temp/
-temp.htm
 test.ics
-test.php
 
 # Uploads and dynamic content
 uploads/
@@ -56,3 +54,8 @@ cache/
 # Test files
 tests/
 test/
+
+# Local development overrides (don't commit to production)
+admin/modules/header.php
+pages/agents/modules/header.php
+pages/coordinators/modules/header.php
