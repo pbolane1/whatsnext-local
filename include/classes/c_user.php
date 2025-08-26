@@ -295,12 +295,18 @@ class user extends DBRowEx
 			$files[$filename] = $temp_file_path;
 		}
 		
-		// Send email to agent only (not to coordinators to avoid duplicates)
-		$agent_email = $agent->Get('agent_email');
-		if($agent_email) {
-			email::SetMailer('PHPMAILER');
-			email::templateMail($agent_email, email::GetEmail(), $subject, file::GetPath('email_activity_log'), $mail_params+array('base_url'=>_navigation::GetBaseURL()), 'FROM:'.email::GetEmail(), $files);
+		// Send emails to agent and coordinators (restored original functionality)
+		$emails=array();
+		$emails[]=$agent->Get('agent_email');
+		foreach($agent->GetCoordinatorIDs() as $coordinator_id)
+		{
+			$coordinator=new coordinator($coordinator_id);
+			$emails[]=$coordinator->Get('coordinator_email');
 		}
+		
+		email::SetMailer('PHPMAILER');
+		foreach($emails as $email)
+			email::templateMail($email,email::GetEmail(),$subject,file::GetPath('email_activity_log'),$mail_params+array('base_url'=>_navigation::GetBaseURL()),'FROM:'.email::GetEmail(),$files);
 		
 		// Clean up CSV file after emailing
 		if($f !== null && file_exists($temp_file_path)) {
