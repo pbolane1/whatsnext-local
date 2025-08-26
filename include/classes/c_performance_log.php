@@ -101,8 +101,18 @@ class performance_log extends DBRowEx
 	public function GetMemoryUsed()
 	{
 		$pid = getmypid(); 
-		exec('ps --pid '.$pid.' --no-headers -orss  2>&1',$result);
-		return $result[0];
+		
+		// Detect OS and use appropriate ps command
+		if (PHP_OS === 'Darwin') {
+			// macOS - use ps with different options
+			exec('ps -p '.$pid.' -o rss= 2>&1', $result);
+		} else {
+			// Linux - use original ps command
+			exec('ps --pid '.$pid.' --no-headers -orss 2>&1', $result);
+		}
+		
+		// Return memory value or 0 if command fails
+		return isset($result[0]) && is_numeric($result[0]) ? $result[0] : 0;
 	}
 	
 	public function Commit()	

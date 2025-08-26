@@ -48,7 +48,13 @@ class activity_log extends DBRowEx
 
 		$activity_log->Set('foreign_class',get_class($object));
 		$activity_log->Set('foreign_id',$object->id);
-		$activity_log->Set('user_id',$object->Get('user_id')?$object->Get('user_id'):$user_id);
+		
+		// Only set user_id if we have a valid value
+		$valid_user_id = $object->Get('user_id') ? $object->Get('user_id') : $user_id;
+		if ($valid_user_id && is_numeric($valid_user_id)) {
+			$activity_log->Set('user_id', $valid_user_id);
+		}
+		
 		$activity_log->Set('session_id',Session::GetID());
 		$activity_log->Update();
 		
