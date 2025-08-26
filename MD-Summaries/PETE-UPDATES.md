@@ -99,6 +99,33 @@ BEGIN UPDATES
 **Type:** Feature Enhancement  
 **Status:** Completed
 
+---
+
+### LEGACY BUYER QUESTIONNAIRE MODAL REMOVAL - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Code Cleanup & Bug Fix  
+**Status:** Completed  
+**Priority:** MEDIUM  
+
+**Summary:** Successfully removed legacy "Home Buyer Questionnaire" modal that was appearing at the bottom of the users page, causing display issues and cluttering the interface.
+
+**Key Accomplishments:**
+- Removed legacy buyer questionnaire modal from users page footer
+- Deleted unused buyer-questionnaire.html and send_questionnaire.php files
+- Cleaned up include statements and references
+- Resolved display issues caused by legacy modal code
+
+**Action Required:** None - legacy code completely removed  
+**Files Modified:** pages/users/index.php (removed include)  
+**Files Deleted:** modules/buyer-questionnaire.html, modules/send_questionnaire.php  
+**Files Created:** [Remove-Questionnaire-from-footer.md](Details/Remove-Questionnaire-from-footer.md) - Detailed cleanup documentation
+
+**Benefits:**
+- Cleaner users page interface
+- Removed unused legacy functionality
+- Improved page performance
+- Better code maintainability
+
 **Summary:** Enhanced the archive CSV export functionality to include proper headers for better data organization and readability.
 
 **Key Accomplishments:**
