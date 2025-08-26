@@ -298,7 +298,17 @@ class user extends DBRowEx
 		// Only attach file if it was successfully created and exists
 		if($f !== null && file_exists($temp_file_path)) {
 			$files[$filename] = $temp_file_path;
+			error_log("CSV file created successfully: " . $temp_file_path . " (size: " . filesize($temp_file_path) . " bytes)");
+		} else {
+			error_log("CSV file creation failed or file doesn't exist: " . $temp_file_path);
+			$files = array(); // Ensure files is empty if CSV creation failed
 		}
+		
+		// Debug logging
+		error_log("Email parameters - Subject: " . $subject);
+		error_log("Email parameters - Files count: " . count($files));
+		error_log("Email parameters - Mail params keys: " . implode(', ', array_keys($mail_params)));
+		error_log("Email parameters - Opt out link: " . ($mail_params['opt_out_link'] ?? 'NOT SET'));
 		
 		// Send emails to agent and coordinators (restored original functionality)
 		$emails=array();
@@ -310,8 +320,11 @@ class user extends DBRowEx
 		}
 		
 		email::SetMailer('PHPMAILER');
-		foreach($emails as $email)
-			email::templateMail($email,email::GetEmail(),$subject,file::GetPath('email_activity_log'),$mail_params+array('base_url'=>_navigation::GetBaseURL()),'FROM:'.email::GetEmail(),$files);
+		foreach($emails as $email) {
+			error_log("Sending email to: " . $email . " with " . count($files) . " attachments");
+			$result = email::templateMail($email,email::GetEmail(),$subject,file::GetPath('email_activity_log'),$mail_params+array('base_url'=>_navigation::GetBaseURL()),'FROM:'.email::GetEmail(),$files);
+			error_log("Email send result: " . ($result ? 'SUCCESS' : 'FAILED'));
+		}
 		
 		// Clean up CSV file after emailing
 		if($f !== null && file_exists($temp_file_path)) {
