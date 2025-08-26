@@ -5,7 +5,7 @@ Document last updated: August 26, 2025
 Last feature updated: Legacy Buyer Questionnaire Modal Removal
 
 ### Overview
-This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature lives in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone.
+This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature are organized by branch in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone.
 
 ### BRANCH TRACKING
 **Current Active Branch:** `pete-ai-fixes`  
@@ -16,6 +16,12 @@ This file is meant to document the changes made to the site by Pete. This file w
 - `main` → Core development branch with recent fixes (August 2025)
 - `safe-deployment` → Legacy cleanup and documentation branch (August 26, 2025) - **MERGED**
 - `pete-ai-fixes` → Current active branch for new development (August 26, 2025+)
+
+**Details Folder Organization:**
+- `Details/Edits-to-Aug-Paul-DevUpdates/` → All documentation from Edits-to-Aug-Paul-DevUpdates branch
+- `Details/main/` → All documentation from main branch  
+- `Details/safe-deployment/` → All documentation from safe-deployment branch
+- `Details/` (root) → Documentation from unknown/unclear branches (requires manual organization)
 
 ### RESOURCES
 - [SITE-SUMMARY.md](SITE-SUMMARY.md)   An original summary of the site and its features before I started making edits.
@@ -54,7 +60,7 @@ BEGIN UPDATES
 
 **Action Required:** None - environment fully functional and ready for development  
 **Files Modified:** docker-compose.yml, docker/apache/Dockerfile, include/common.php, include/lib/navigation.php  
-**Files Created:** [SETUP-DOCKER.md](Details/SETUP-DOCKER.md) - Comprehensive Docker setup documentation
+**Files Created:** [SETUP-DOCKER.md](Details/Edits-to-Aug-Paul-DevUpdates/SETUP-DOCKER.md) - Comprehensive Docker setup documentation
 
 **Benefits:**
 - Consistent development environment across all machines
@@ -80,7 +86,7 @@ BEGIN UPDATES
 
 **Action Required:** None - enhancement complete  
 **Files Modified:** Archive export functionality  
-**Files Created:** [ARCHIVE-CSV-HEADER.md](Details/ARCHIVE-CSV-HEADER.md)
+**Files Created:** [ARCHIVE-CSV-HEADER.md](Details/Edits-to-Aug-Paul-DevUpdates/ARCHIVE-CSV-HEADER.md)
 
 ---
 
@@ -107,7 +113,7 @@ BEGIN UPDATES
 
 **Action Required:** None - enhancement complete  
 **Files Modified:** include/traits/t_transaction_handler.php  
-**Files Created:** [Print Timeline-add header.md](Details/Print%20Timeline-add%20header.md)
+**Files Created:** [Print Timeline-add header.md](Details/Edits-to-Aug-Paul-DevUpdates/Print%20Timeline-add%20header.md)
 
 **Benefits:**
 - Better document identification when printing
@@ -152,7 +158,7 @@ BEGIN UPDATES
 
 **Action Required:** None - feature fully implemented and functional  
 **Files Modified:** pages/agents/modules/footer.php  
-**Files Created:** [Coordinator-Proxy-Banner-Exit-Link.md](Details/Coordinator-Proxy-Banner-Exit-Link.md) - Detailed implementation documentation
+**Files Created:** [Coordinator-Proxy-Banner-Exit-Link.md](Details/Edits-to-Aug-Paul-DevUpdates/Coordinator-Proxy-Banner-Exit-Link.md) - Detailed implementation documentation
 
 **Benefits:**
 - Improved user experience for coordinators using proxy functionality
@@ -182,7 +188,7 @@ BEGIN UPDATES
 
 **Action Required:** None - fix complete and functional  
 **Files Modified:** include/traits/t_public_user.php (renamed from t_pubic_user.php)  
-**Files Created:** [Fix-t_pubic_user.php.md](Details/Fix-t_pubic_user.php.md) - Detailed fix documentation
+**Files Created:** [Fix-t_pubic_user.php.md](Details/main/Fix-t_pubic_user.php.md) - Detailed fix documentation
 
 **Impact:**
 - Prevents potential PHP autoloading failures
@@ -219,7 +225,7 @@ BEGIN UPDATES
 
 **Action Required:** Further investigation needed for image display issue  
 **Files Modified:** include/classes/c_user.php, email_templates/email_activity_log.html  
-**Files Created:** [CSV-Email-Template-Issues.md](Details/CSV-Email-Template-Issues.md)
+**Files Created:** [CSV-Email-Template-Issues.md](Details/main/CSV-Email-Template-Issues.md)
 
 **Technical Details:**
 - Temp directory permissions were preventing CSV file creation
@@ -250,7 +256,7 @@ BEGIN UPDATES
 **Action Required:** None - legacy code completely removed  
 **Files Modified:** pages/users/index.php (removed include)  
 **Files Deleted:** modules/buyer-questionnaire.html, modules/send_questionnaire.php  
-**Files Created:** [Remove-Questionnaire-from-footer.md](Details/Remove-Questionnaire-from-footer.md) - Detailed cleanup documentation
+**Files Created:** [Remove-Questionnaire-from-footer.md](Details/safe-deployment/Remove-Questionnaire-from-footer.md) - Detailed cleanup documentation
 
 **Benefits:**
 - Cleaner users page interface
