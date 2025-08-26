@@ -109,7 +109,7 @@ a.disclink:hover
 DIV.headline {
     background: #121619;
     padding: 50px;
-    min-height:100%;
+    /* min-height:100%; */
     background:linear-gradient(0deg, rgba(18, 22, 25, 0.8), rgba(18, 22, 25, 0.8)), url(https://app.whatsnext.realestate/images/header-bg.jpg);
     background-size:cover;
     background-position: center center;
