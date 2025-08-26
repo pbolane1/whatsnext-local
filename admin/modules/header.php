@@ -53,7 +53,7 @@
 </script>
 
 <div class='headline'>	
-	<h1>Administration</h1>
+	<h1><?php echo(isset($__headline__)?$__headline__:'Administration');?></h1>
 </div>	
 
 <!--POPUP-->
