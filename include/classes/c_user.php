@@ -287,6 +287,11 @@ class user extends DBRowEx
 		$opt_out_url = _navigation::GetBaseURL() . "pages/agents/index.php?action=opt_out&user_id=" . $this->id . "&token=" . md5($this->id . $this->Get('user_email') . 'opt_out');
 		$mail_params['opt_out_link'] = $opt_out_url;
 		
+		// Add missing template variables
+		$mail_params['user_url'] = _navigation::GetBaseURL() . "pages/users/index.php?user_id=" . $this->id;
+		$mail_params['user_image_file'] = $this->Get('user_image_file') ? _navigation::GetBaseURL() . "dynamic/images/users/" . $this->Get('user_image_file') : '';
+		$mail_params['agent_image_file1'] = $agent->Get('agent_image_file1') ? _navigation::GetBaseURL() . "dynamic/images/agents/" . $agent->Get('agent_image_file1') : '';
+		
 		$headers=array();
 		$files=array();
 		
