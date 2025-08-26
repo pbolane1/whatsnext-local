@@ -1,0 +1,57 @@
+services:
+  # Apache + PHP container
+  web:
+    build:
+      context: ./docker/apache
+      dockerfile: Dockerfile
+    container_name: whatsnext-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    networks:
+      - whatsnext-network
+
+  # MySQL container
+  mysql:
+    image: mysql:8.0
+    container_name: whatsnext-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: whatsnext_dev
+      MYSQL_USER: whatsnext_user
+      MYSQL_PASSWORD: whatsnext_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - whatsnext-network
+
+  # phpMyAdmin for database management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: whatsnext-phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: whatsnext_user
+      PMA_PASSWORD: whatsnext_pass
+    depends_on:
+      - mysql
+    networks:
+      - whatsnext-network
+
+volumes:
+  mysql_data:
+
+networks:
+  whatsnext-network:
+    driver: bridge

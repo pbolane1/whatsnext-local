@@ -1,0 +1,2 @@
+# Enable CGI execution for PHP processing
+Options +ExecCGI
