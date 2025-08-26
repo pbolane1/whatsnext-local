@@ -94,6 +94,26 @@ BEGIN UPDATES
 
 ---
 
+### ARCHIVE CSV HEADER ENHANCEMENT - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Feature Enhancement  
+**Status:** Completed  
+**Priority:** Medium  
+
+**Summary:** Enhanced the transaction archiving functionality to include descriptive headers in CSV exports. When agents archive transactions via dashboard, timeline item, or agent tools, the generated CSV now includes a contextual header row with client name, property address, and archive date.
+
+**Key Features:**
+- Header row format: "Activity Log for [client-name] - [client property address] - Archived [archive-date]"
+- Applies to all three archiving methods
+- Maintains existing error handling and automatic file cleanup
+- Improves CSV readability and context for agents
+
+**Action Required:** None - feature complete and tested  
+**Files Modified:** include/classes/c_user.php  
+**Files Created:** [Update Archive CSV with header.md](Details/Update%20Archive%20CSV%20with%20header.md)
+
+---
+
 ### COORDINATOR PROXY BANNER EXIT LINK - August 26, 2025
 **Date:** August 26, 2025  
 **Type:** User Experience Enhancement  

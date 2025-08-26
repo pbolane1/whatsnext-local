@@ -226,26 +226,46 @@ class user extends DBRowEx
 
 		$filename=mod_rewrite::ToURL($this->Get('user_name')).'-Activity-Log'.'.csv';
 		$f=fopen(file::GetPath('temp').$filename,'w');
-		fwrite($f,"Date/Time".",");
-		fwrite($f,"Action/".",");
-		fwrite($f,"Performed By".",");
-		fwrite($f,"IP ".",");
-		fwrite($f,"\r\n");
+		
+		// Check if file was opened successfully
+		if($f === false) {
+			$f = null;
+		} else {
+			// Add header row with client info and archive date
+			$archive_date = new date();
+			$archive_date->SetTimestamp(time());
+			$header_text = "Activity Log for ".$this->Get('user_name')." - ".$this->GetPropertyName()." - Archived ".$archive_date->GetDate('F j, Y \a\t g:ia');
+			fwrite($f,'"'.$header_text.'"'.",");
+			fwrite($f,",");
+			fwrite($f,",");
+			fwrite($f,",");
+			fwrite($f,"\r\n");
+			
+			fwrite($f,"Date/Time".",");
+			fwrite($f,"Action/".",");
+			fwrite($f,"Performed By".",");
+			fwrite($f,"IP ".",");
+			fwrite($f,"\r\n");
+		}
 		if(!count($list->items))
 			echo("<tr><td class='emptyset' colspan='100'>There is no activity to display</tr>");	
 		foreach($list->items as $activity_log)
 		{
-			$class=$activity_log->Get('foreign_class');
-		 	$object=new $class($activity_log->Get('foreign_id'));
-			$d=new date();
-			$d->SetTimestamp($activity_log->Get('activity_log_timestamp'));
-			fwrite($f,'"'.$d->GetDate('m/d/Y h:i a').'"'.',');
-			fwrite($f,'"'.$activity_log->Get('activity_log_details').'"'.',');
-			fwrite($f,'"'.$activity_log->Get('activity_log_name').'"'.',');
-			fwrite($f,'"'.$activity_log->Get('activity_log_ip').'"'.',');
-			fwrite($f,"\r\n");
+			if($f !== null) {
+				$class=$activity_log->Get('foreign_class');
+				$object=new $class($activity_log->Get('foreign_id'));
+				$d=new date();
+				$d->SetTimestamp($activity_log->Get('activity_log_timestamp'));
+				fwrite($f,'"'.$d->GetDate('m/d/Y h:i a').'"'.',');
+				fwrite($f,'"'.$activity_log->Get('activity_log_details').'"'.',');
+				fwrite($f,'"'.$activity_log->Get('activity_log_name').'"'.',');
+				fwrite($f,'"'.$activity_log->Get('activity_log_ip').'"'.',');
+				fwrite($f,"\r\n");
+			}
 		}
-		fclose($f);
+		if($f !== null) {
+			fclose($f);
+		}
 
 		$agent=new agent($this->Get('agent_id'));
 		
@@ -267,14 +287,22 @@ class user extends DBRowEx
 		}
 		
 		$headers=array();
-		$files=array($filename=>file::GetPath('temp').$filename);
+		$files=array();
+		
+		// Only attach file if it was successfully created
+		if($f !== null && file_exists(file::GetPath('temp').$filename)) {
+			$files[$filename] = file::GetPath('temp').$filename;
+		}
 		
 		email::SetMailer('PHPMAILER');
 		foreach($emails as $email)
 			email::templateMail($email,email::GetEmail(),$subject,file::GetPath('email_activity_log'),$mail_params+array('base_url'=>_navigation::GetBaseURL()),'FROM:'.email::GetEmail(),$files);
 
 		
-		unlink(file::GetPath('temp').$filename);
+		// Clean up CSV file after emailing
+		if($f !== null && file_exists(file::GetPath('temp').$filename)) {
+			unlink(file::GetPath('temp').$filename);
+		}
 
 
 	}
