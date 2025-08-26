@@ -1,8 +1,8 @@
 # PETE-UPDATES.md
 ----------------------------------------------------------------------------------------------------------------------
 Documentation for implemented features and coding changes.
-Document last updated: December 19, 2024
-Last feature updated: Initial Setup & Repository Reset
+Document last updated: August 26, 2025
+Last feature updated: Docker Development Environment Setup
 
 ### Overview
 This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature lives in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone.
@@ -56,3 +56,38 @@ BEGIN UPDATES
 
 **Files Modified:** None (assessment only)  
 **Files Created:** [SECURITY-EVAL.md](Details/SECURITY-EVAL.md)
+
+---
+
+### DOCKER DEVELOPMENT ENVIRONMENT SETUP - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Development Environment Migration  
+**Status:** Completed  
+**Priority:** HIGH  
+
+**Summary:** Successfully migrated from MAMP to a fully functional Docker-based development environment, resolving critical session persistence issues and creating a robust, consistent development setup.
+
+**Key Accomplishments:**
+- Complete Docker environment with PHP 8.1, Apache, MySQL, and phpMyAdmin
+- Critical session persistence issues completely resolved
+- Database schema successfully imported with 37 tables
+- All authentication and URL routing functionality working correctly
+- Environment configuration version controlled and documented
+
+**Technical Details:**
+- Custom PHP container with proper session configuration
+- MySQL container with production schema
+- phpMyAdmin for database management
+- Custom bridge network for service communication
+- Ports: 8080 (app), 8081 (phpMyAdmin), 3306 (MySQL)
+
+**Action Required:** None - environment fully functional and ready for development  
+**Files Modified:** docker-compose.yml, docker/apache/Dockerfile, include/common.php, include/lib/navigation.php  
+**Files Created:** [SETUP-DOCKER.md](Details/SETUP-DOCKER.md) - Comprehensive Docker setup documentation
+
+**Benefits:**
+- Consistent development environment across all machines
+- No conflicts with local PHP/MySQL installations
+- Easy to add additional services
+- Version controlled environment configuration
+- Team collaboration with identical environments

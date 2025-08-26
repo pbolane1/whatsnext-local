@@ -39,6 +39,11 @@ WORKDIR /var/www/html
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY php.ini /usr/local/etc/php/php.ini
 
+# Create sessions directory with proper permissions
+RUN mkdir -p /var/www/html/temp/sessions \
+    && chown -R www-data:www-data /var/www/html/temp/sessions \
+    && chmod -R 755 /var/www/html/temp/sessions
+
 # Enable the site
 RUN a2ensite 000-default.conf
 

@@ -141,6 +141,12 @@ class _navigation
 		  	//determine
 			global $_SERVER;
 			$path=$_SERVER['DOCUMENT_ROOT'];
+			
+			// Docker environment fix - if DOCUMENT_ROOT is empty, use the actual path
+			if(empty($path) && file_exists('/.dockerenv')) {
+				$path = '/var/www/html/';
+			}
+			
 			if($path[strlen($path)-1]!='/' and $path[strlen($path)-1]!='\\')
 			    $path.='/';
 
