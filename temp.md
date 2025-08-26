@@ -64,16 +64,25 @@
 - **NEXT**: Need deeper investigation of database schema issue
 - Status: Ready for next debugging session
 
-### 3. Final Testing
+### 3. ⚠️ AGENTS URL ROUTING CONFIGURATION NEEDED
+- ✅ Identified root cause: Local MAMP lacks production Apache URL rewriting
+- ✅ Found `GetUserURL()` method in `c_agent.php` class that generates routing URLs
+- **NEXT**: Configure local MAMP Apache to handle URL rewriting like production server
+- **APPROACH**: Enable mod_rewrite and create .htaccess rules to match production behavior
+- Status: Ready for next session to implement MAMP configuration
+
+### 4. Final Testing
 - Test all admin dashboard functions
 - Verify all navigation paths work correctly  
 - Test agent and coordinator dashboards again to ensure no regressions
 - Test users password reset functionality
+- **Test agents URL routing** - Verify `/agents/user/{hash}/edit_user.php` works
 - Confirm admin navigation works as expected
 
-### 4. Final Commit (if needed)
+### 5. Final Commit (if needed)
 - All navigation issues appear resolved
 - Users password reset workaround implemented
+- Agents URL routing configuration implemented
 - Ready to commit fixes and push to repository
 
 ## FILES MODIFIED THIS SESSION
