@@ -1,6 +1,12 @@
 <?php include('../../include/common.php') ?>
 <?php include('../../include/_user.php') ?>
 
+<?php
+// Clear database schema cache to fix table mismatch issue
+global $_db_schema;
+$_db_schema = array();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

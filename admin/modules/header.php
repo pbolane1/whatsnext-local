@@ -9,14 +9,14 @@
 			      <span class="icon-bar"></span>
 			    </button>
 				<div class='logo'>
-				  <a href="/pages/agents/"><img src='/images/logo.png'></a>
+				  <a href="agents.php"><img src='/images/logo.png'></a>
 				</div>
 			  </div>
 			  <div class="navbar-collapse collapse">
 			    <ul class="nav navbar-nav">
 			      <li><a href="index.php"><?php echo($__DEV__?'DEV':$__VERSION__)?></a></li>
-			      <li><a href="/pages/agents/">Agents</a></li>
-			      <li><a href="/pages/coordinators/">Coordinators</a></li>
+			      <li><a href="agents.php">Agents</a></li>
+			      <li><a href="coordinators.php">Coordinators</a></li>
 			      <li><a href="templates.php">Timeline Templates</a></li>
 				  <li class="dropdown"><a href='#' class="dropdown-toggle" data-toggle="dropdown">System Settings</a>
 				  	<ul class="dropdown-menu">
