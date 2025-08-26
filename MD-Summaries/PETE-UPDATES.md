@@ -91,3 +91,37 @@ BEGIN UPDATES
 - Easy to add additional services
 - Version controlled environment configuration
 - Team collaboration with identical environments
+
+---
+
+### COORDINATOR PROXY BANNER EXIT LINK - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** User Experience Enhancement  
+**Status:** Completed  
+**Priority:** MEDIUM  
+
+**Summary:** Enhanced the coordinator proxy functionality by adding an exit link directly within the yellow banner that appears when coordinators are proxying into agent accounts.
+
+**Key Accomplishments:**
+- Added "Exit Account and Return to Coordinator Dashboard" link to proxy banner
+- Banner now displays: "Managing [agent name] Account. Exit Account and Return to Coordinator Dashboard"
+- Improved user experience by providing direct access to exit functionality
+- Maintained existing "Exit" link in navigation for consistency
+
+**Technical Details:**
+- Modified `pages/agents/modules/footer.php` to include exit link in proxy notice
+- Link styled with black text, underline, and bold formatting for visibility
+- Uses same logout action (`/pages/agents/index.php?action=logout`) as navigation exit link
+- Coordinators can now exit proxy mode directly from the banner without navigating to top menu
+
+**Action Required:** None - feature fully implemented and functional  
+**Files Modified:** pages/agents/modules/footer.php  
+**Files Created:** [Coordinator-Proxy-Banner-Exit-Link.md](Details/Coordinator-Proxy-Banner-Exit-Link.md) - Detailed implementation documentation
+
+**Benefits:**
+- Improved user experience for coordinators using proxy functionality
+- Reduced navigation steps to exit proxy mode
+- Clear visual indication of proxy status with actionable exit option
+- Maintains consistency with existing logout functionality
+
+---
