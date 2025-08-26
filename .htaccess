@@ -1,0 +1,82 @@
+RewriteEngine On
+
+#######################################
+RewriteRule ^proxy/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/(.*) /pages/agents/$4?coordinator_hash=$1&agent_hash=$2&check=$3&action=proxy_login [QSA,NC]
+
+# Specific rules - must come BEFORE general rules
+RewriteRule ^agents/user/([a-zA-Z0-9]+)/(.*) /pages/agents/$2?user_hash=$1 [QSA,NC]
+RewriteRule ^coordinators/user/([a-zA-Z0-9]+)/(.*) /pages/coordinators/$2?user_hash=$1 [QSA,NC]
+
+RewriteRule ^users/login/([a-zA-Z0-9]+)/(.*) /pages/users/?action=user_link&user_link_hash=$1&redir=$2 [QSA,NC]
+RewriteRule ^users/login/(.*)$ /pages/users/?action=user_link&user_link_hash=$1 [QSA,NC]
+RewriteRule ^agents/login/([a-zA-Z0-9]+)/(.*) /pages/agents/?action=agent_link&agent_link_hash=$1&redir=$2 [QSA,NC]
+RewriteRule ^agents/login/(.*)$ /pages/agents/?action=agent_link&agent_link_hash=$1 [QSA,NC]
+RewriteRule ^coordinators/login/([a-zA-Z0-9]+)/(.*) /pages/coordinators/?action=coordinator_link&coordinator_link_hash=$1&redir=$2 [QSA,NC]
+RewriteRule ^coordinators/login/(.*)$ /pages/coordinators/?action=coordinator_link&coordinator_link_hash=$1 [QSA,NC]
+
+RewriteRule ^users/ical/([a-zA-Z0-9]+).ics$ /pages/users/ical.php?user_contact_hash=$1 [QSA,NC]
+RewriteRule ^agents/ical/([a-zA-Z0-9]+)/([a-zA-Z0-9]+).ics$ /pages/agents/ical.php?agent_hash=$1&user_hash=$2 [QSA,NC]
+RewriteRule ^coordinators/ical/([a-zA-Z0-9]+)/([a-zA-Z0-9]+).ics$ /pages/coordinators/ical.php?coordinator_hash=$1&user_hash=$2 [QSA,NC]
+
+# General rules - must come AFTER specific rules
+RewriteRule ^buyers(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^sellers(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^users(.*) /pages/users/$1 [L,QSA,NC]
+RewriteRule ^agents(.*) /pages/agents/$1 [L,QSA,NC]
+RewriteRule ^coordinators(.*) /pages/coordinators/$1 [L,QSA,NC]
+
+#######################################
+RewriteCond %{REQUEST_URI} /$
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI}/.php -f
+RewriteRule ^(.*)/$ /$1.php [L]
+
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI}.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+################################################################
+## 
+## Page Types
+## 
+################################################################
+
+################################################################
+## 
+## 301s
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php8_module>
+   php_flag display_errors On
+   php_flag display_startup_errors On
+   php_value max_execution_time 60
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 512M
+   php_value post_max_size 516M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php83"
+   php_value upload_max_filesize 512M
+   php_flag zlib.output_compression Off
+   php_flag log_errors On
+   php_value error_reporting E_ALL
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors On
+   php_flag display_startup_errors On
+   php_value max_execution_time 60
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 512M
+   php_value post_max_size 516M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php83"
+   php_value upload_max_filesize 512M
+   php_flag zlib.output_compression Off
+   php_flag log_errors On
+   php_value error_reporting E_ALL
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
+

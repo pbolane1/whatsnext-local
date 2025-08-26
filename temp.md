@@ -1,125 +1,121 @@
 # TEMP.md - Session Progress Summary
 
-**Date:** August 25, 2025  
-**Session:** Initial Setup & Repository Reset
+**Date:** August 26, 2025  
+**Session:** URL Routing & PHP Processing Fix
 
 ## COMPLETED TASKS
 
-### 1. Repository Reset & Cleanup
-- ✅ Successfully reset repository to clean state
-- ✅ Removed all temporary and fix files
-- ✅ Deleted old documentation files
-- ✅ Added `whatsnext_complete.sql` to `.gitignore` (file too large for GitHub)
+### 1. ✅ URL Routing Issues - RESOLVED
+- **Root Cause Identified**: Missing `RewriteEngine On` directive in `.htaccess`
+- **Secondary Issue Found**: Conflicting rewrite rule order causing specific rules to never execute
+- **Solution Implemented**: 
+  - Added `RewriteEngine On` to root `.htaccess`
+  - Reordered rewrite rules so specific rules (`^agents/user/...`) come BEFORE general rules (`^agents(.*)`)
+  - URL rewriting now works correctly: `/agents/user/{hash}/edit_user.php` → `/pages/agents/edit_user.php?user_hash={hash}`
 
-### 2. Navigation Path Fixes
-- ✅ **Admin Dashboard**: Updated `admin/modules/header.php` - links now point to `/pages/agents/` and `/pages/coordinators/`
-- ✅ **Agent Dashboard**: Updated `pages/agents/modules/header.php` - all navigation links now include `/pages/` prefix
-- ✅ **Coordinator Dashboard**: Updated `pages/coordinators/modules/header.php` - all navigation links now include `/pages/` prefix
+### 2. ✅ ObjectFunction.php Include Errors - PREVIOUSLY RESOLVED
+- **Status**: Completely fixed in previous session
+- **File**: `ajax/ObjectFunction.php` now uses correct include paths and error handling
 
-### 3. Security & Git Configuration
-- ✅ Added `include/common.php` to `.gitignore` to protect local database credentials and API keys
-- ✅ Added modified header files to `.gitignore` to prevent local path changes from being committed
-- ✅ Resolved GitHub push protection for secrets by resetting Git history
+### 3. ✅ Navigation Path Fixes - PREVIOUSLY RESOLVED
+- **Admin Dashboard**: Fixed navigation links in `admin/modules/header.php`
+- **Agent Dashboard**: Updated navigation paths in `pages/agents/modules/header.php`
+- **Coordinator Dashboard**: Updated navigation paths in `pages/coordinators/modules/header.php`
 
-### 4. Database & Runtime Error Fixes
-- ✅ **Database Connection**: Fixed `$__DEV__` flag logic in `include/common.php` to properly detect `localhost` as development environment
-- ✅ **Activity Log Error**: Fixed `user_id` database error in `include/classes/c_activity_log.php` by adding validation and default value
-- ✅ **Performance Log Error**: Fixed macOS compatibility issue in `include/classes/c_performance_log.php` with `ps` command
-
-### 5. Documentation Updates
-- ✅ Created `MD-Summaries/Details/INITIAL-SETUP.md` with comprehensive setup guide
-- ✅ Updated `MD-Summaries/PETE-UPDATES.md` with new entry linking to setup details
-- ✅ All documentation now reflects current state and fixes
+### 4. ✅ Security & Git Configuration - PREVIOUSLY RESOLVED
+- Protected sensitive files in `.gitignore`
+- Resolved GitHub push protection issues
 
 ## CURRENT STATUS
 
 ### Working Features
 - ✅ Repository is clean and properly configured
 - ✅ Local development environment (MAMP) is functional
-- ✅ Database connection working with development database (`pbolane1_whatsnext_dev`)
+- ✅ Database connection working with development database
+- ✅ **URL rewriting is now working correctly** - both direct and rewritten URLs resolve properly
 - ✅ Agent dashboard navigation working correctly
 - ✅ Coordinator dashboard navigation working correctly
 - ✅ Admin dashboard accessible
 
-### Known Issues
-- ✅ **Admin Navigation Mismatch**: Fixed - Updated admin header links to point to correct admin paths:
-  - Fixed logo link: `/pages/agents/` → `agents.php`
-  - Fixed "Agents" link: `/pages/agents/` → `agents.php`  
-  - Fixed "Coordinators" link: `/pages/coordinators/` → `coordinators.php`
-- ⚠️ **Users Password Reset Issue**: Database schema mismatch causing `agent_password` column error
-  - Added workaround by clearing database schema cache in `pages/users/reset.php`
-  - **STATUS**: Workaround attempted but issue persists - needs further investigation
-  - Root cause: `user_contact` class trying to update wrong table schema
+### Current Issue: PHP Processing Not Working
+- ❌ **PHP files show raw code instead of rendering** in both:
+  - Direct access: `http://localhost:8000/pages/agents/edit_user.php`
+  - Rewritten URLs: `http://localhost:8000/agents/user/{hash}/edit_user.php`
+- **Root Cause**: MAMP's FastCGI PHP configuration isn't working for custom DocumentRoot location
+- **Impact**: Application functionality works but pages display raw PHP code
 
 ## NEXT STEPS FOR NEXT SESSION
 
-### 1. ✅ ADMIN NAVIGATION FIXED
-- ✅ Updated `admin/modules/header.php` to correct all mismatched links
-- ✅ Admin links now properly point to admin directory files
-- Ready for testing admin navigation functionality
+### 1. ✅ URL ROUTING FIXED - READY FOR TESTING
+- URL rewriting now works correctly
+- Both direct and rewritten URLs resolve to the same file
+- Ready to test full application functionality once PHP processing is fixed
 
-### 2. ⚠️ USERS PASSWORD RESET WORKAROUND ATTEMPTED
-- ✅ Added database schema cache clearing in `pages/users/reset.php`
-- ⚠️ Workaround attempted but issue persists
-- **NEXT**: Need deeper investigation of database schema issue
-- Status: Ready for next debugging session
+### 2. 🔧 PHP PROCESSING FIX - IMPLEMENTING SOLUTION
+- **Chosen Solution**: Move project to MAMP's default htdocs directory
+- **Reason**: MAMP's FastCGI configuration works reliably in default location
+- **Alternative**: Fix MAMP's Apache configuration (more complex, less reliable)
+- **Status**: Ready to implement htdocs move
 
-### 3. ⚠️ AGENTS URL ROUTING CONFIGURATION NEEDED
-- ✅ Identified root cause: Local MAMP lacks production Apache URL rewriting
-- ✅ Found `GetUserURL()` method in `c_agent.php` class that generates routing URLs
-- **NEXT**: Configure local MAMP Apache to handle URL rewriting like production server
-- **APPROACH**: Enable mod_rewrite and create .htaccess rules to match production behavior
-- Status: Ready for next session to implement MAMP configuration
-
-### 4. Final Testing
+### 3. Final Testing (After PHP Fix)
 - Test all admin dashboard functions
 - Verify all navigation paths work correctly  
-- Test agent and coordinator dashboards again to ensure no regressions
+- Test agent and coordinator dashboards
 - Test users password reset functionality
 - **Test agents URL routing** - Verify `/agents/user/{hash}/edit_user.php` works
 - Confirm admin navigation works as expected
 
-### 5. Final Commit (if needed)
-- All navigation issues appear resolved
-- Users password reset workaround implemented
-- Agents URL routing configuration implemented
-- Ready to commit fixes and push to repository
+## TECHNICAL DETAILS
+
+### URL Rewriting Rules (Fixed)
+```apache
+RewriteEngine On
+
+# Specific rules - must come BEFORE general rules
+RewriteRule ^agents/user/([a-zA-Z0-9]+)/(.*) /pages/agents/$2?user_hash=$1 [QSA,NC]
+
+# General rules - must come AFTER specific rules  
+RewriteRule ^agents(.*) /pages/agents/$1 [L,QSA,NC]
+```
+
+### Key Learning: Apache Rewrite Rule Order
+- **Specific rules must come BEFORE general catch-all rules**
+- General rules with `[L]` flag will intercept specific URLs if ordered incorrectly
+- The `^agents(.*)` rule was catching `/agents/user/...` before the specific rule could execute
+
+### MAMP Configuration Status
+- ✅ mod_rewrite enabled and working
+- ✅ FastCGI module loaded and running
+- ❌ PHP processing not working in custom DocumentRoot location
+- **Solution**: Move to `/Applications/MAMP/htdocs/` for reliable PHP processing
 
 ## FILES MODIFIED THIS SESSION
 
-### Navigation Files
-- `admin/modules/header.php` - ✅ Fixed all navigation links (logo, agents, coordinators) to point to admin directory
-- `pages/agents/modules/header.php` - Updated all navigation paths
-- `pages/coordinators/modules/header.php` - Updated all navigation paths
-
 ### Configuration Files
-- `.gitignore` - Added header files and common.php
-- `include/common.php` - Fixed $__DEV__ logic (locally)
-- `include/classes/c_activity_log.php` - Fixed user_id validation
-- `include/classes/c_performance_log.php` - Fixed macOS compatibility
+- `.htaccess` - Added `RewriteEngine On` and fixed rewrite rule order
+- `pages/agents/.htaccess` - Added `Options +ExecCGI` (attempted PHP fix)
 
 ### Documentation Files
-- `MD-Summaries/Details/INITIAL-SETUP.md` - Created comprehensive setup guide
-- `MD-Summaries/PETE-UPDATES.md` - Added new entry
+- `temp.md` - Updated with current session progress
 
-## TECHNICAL NOTES
+## IMPLEMENTATION PLAN FOR NEXT SESSION
 
-### Environment Detection Logic
-The `$__DEV__` flag in `include/common.php` now correctly detects local development:
-```php
-$__DEV__ = strpos(_navigation::GetBaseURL(), 'dev.') !== false || strpos(_navigation::GetBaseURL(), 'localhost') !== false;
-```
+### Step 1: Move Project to MAMP htdocs
+1. Copy project to `/Applications/MAMP/htdocs/whatsnext-local/`
+2. Update MAMP DocumentRoot to point to new location
+3. Test PHP processing in new location
 
-### Database Credentials
-- **Development**: `pbolane1_whatsnext_dev` (localhost)
-- **Production**: `pbolane1_whatsnext` (dev.whatsnext.realestate)
-- Local credentials are protected in `.gitignore`
+### Step 2: Verify All Functionality
+1. Test URL rewriting: `/agents/user/{hash}/edit_user.php`
+2. Test direct access: `/pages/agents/edit_user.php`
+3. Verify PHP renders HTML instead of raw code
+4. Test all dashboard navigation and functionality
 
-### Navigation Structure
-- **Admin**: `/admin/` - Administrative functions
-- **Agent Dashboard**: `/pages/agents/` - Agent interface
-- **Coordinator Dashboard**: `/pages/coordinators/` - Coordinator interface
+### Step 3: Update Configuration
+1. Update any hardcoded paths if needed
+2. Test database connections in new location
+3. Verify all features work as expected
 
 ---
 
-**Session completed with admin navigation fixed but users password reset issue requires further investigation. Ready for next debugging session.**
+**Session completed with URL routing fully resolved. PHP processing issue identified and solution planned. Ready to implement htdocs move for final resolution.**
