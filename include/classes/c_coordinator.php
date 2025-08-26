@@ -643,7 +643,7 @@ class coordinator extends DBRowEx
 		//form::Begin('view_tasks.php','POST',false,array('id'=>'list_agents'));
 		echo("<div class='agent_dashboard'>");
 		echo("<table class='listing'>");
-		echo("<tr class='agent_bg_color1'><th>Agent Name</th><th>Sent Invitation</th><th>Status</th><th>Buyer Template</th><th>Seller Template</th><th>Access Account</th><th>Remove From Account</th></tr>");
+		echo("<tr class='agent_bg_color1'><th>Agent Name</th><th>Sent Invitation</th><th>Status</th><th>Default Buyer Template</th><th>Default Seller Template</th><th>Access Account</th><th>Remove From Account</th></tr>");
 		if(!count($list->items))
 			echo("<tr><td class='emptyset' colspan='100'>There are no active transactions to display</tr>");	
 		foreach($list->items as $agent_to_coordinator)
