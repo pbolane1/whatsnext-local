@@ -2,11 +2,19 @@
 ----------------------------------------------------------------------------------------------------------------------
 Documentation for implemented features and coding changes.
 Document last updated: August 26, 2025
-Last feature updated: Docker Development Environment Setup
+Last feature updated: Legacy Buyer Questionnaire Modal Removal
 
 ### Overview
 This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature lives in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone.
 
+### BRANCH TRACKING
+**Current Active Branch:** `pete-ai-fixes`  
+**Previous Branches:** `Edits-to-Aug-Paul-DevUpdates`, `safe-deployment` (merged)
+
+**Branch History:**
+- `Edits-to-Aug-Paul-DevUpdates` → Initial development branch (December 2024 - August 2025)
+- `safe-deployment` → Legacy cleanup and documentation branch (August 26, 2025) - **MERGED**
+- `pete-ai-fixes` → Current active branch for new development (August 26, 2025+)
 
 ### RESOURCES
 - [SITE-SUMMARY.md](SITE-SUMMARY.md)   An original summary of the site and its features before I started making edits.
@@ -17,11 +25,15 @@ This file is meant to document the changes made to the site by Pete. This file w
 BEGIN UPDATES
 ----------------------------------------------------------------------------------------------------------------------
 
+## BRANCH: Edits-to-Aug-Paul-DevUpdates (December 2024 - August 2025)
+*All changes below were made on the Edits-to-Aug-Paul-DevUpdates branch*
+
 ### INITIAL SETUP & REPOSITORY RESET - December 19, 2024
 **Date:** December 19, 2024  
 **Type:** Initial Setup & Repository Reset  
 **Status:** Completed  
 **Priority:** HIGH  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Successfully completed a complete repository reset and local development environment setup for the WhatsNext real estate application. This involved cleaning sensitive data, creating new secure repositories, and configuring a fully functional local development environment with MAMP.
 
@@ -43,6 +55,7 @@ BEGIN UPDATES
 **Type:** Security Assessment  
 **Status:** Completed - Requires Immediate Action  
 **Priority:** CRITICAL  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Comprehensive security scan of entire codebase revealed several critical vulnerabilities including dangerous eval() usage, unsafe dynamic class instantiation, and potential remote file inclusion risks.
 
@@ -64,6 +77,7 @@ BEGIN UPDATES
 **Type:** Development Environment Migration  
 **Status:** Completed  
 **Priority:** HIGH  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Successfully migrated from MAMP to a fully functional Docker-based development environment, resolving critical session persistence issues and creating a robust, consistent development setup.
 
@@ -97,7 +111,19 @@ BEGIN UPDATES
 ### ARCHIVE CSV HEADER ENHANCEMENT - August 26, 2025
 **Date:** August 26, 2025  
 **Type:** Feature Enhancement  
-**Status:** Completed
+**Status:** Completed  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
+
+**Summary:** Enhanced the archive CSV export functionality to include proper headers for better data organization and readability.
+
+**Key Accomplishments:**
+- Added descriptive headers to CSV export files
+- Improved data structure for better analysis
+- Enhanced user experience when working with exported data
+
+**Action Required:** None - enhancement complete  
+**Files Modified:** Archive export functionality  
+**Files Created:** [ARCHIVE-CSV-HEADER.md](Details/ARCHIVE-CSV-HEADER.md)
 
 ---
 
@@ -106,6 +132,7 @@ BEGIN UPDATES
 **Type:** Bug Fix  
 **Status:** Completed  
 **Priority:** MEDIUM  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Fixed critical typo in trait filename from `t_pubic_user.php` to `t_public_user.php` to ensure proper PHP autoloading and prevent potential runtime errors.
 
@@ -126,49 +153,12 @@ BEGIN UPDATES
 
 ---
 
-### LEGACY BUYER QUESTIONNAIRE MODAL REMOVAL - August 26, 2025
-**Date:** August 26, 2025  
-**Type:** Code Cleanup & Bug Fix  
-**Status:** Completed  
-**Priority:** MEDIUM  
-
-**Summary:** Successfully removed legacy "Home Buyer Questionnaire" modal that was appearing at the bottom of the users page, causing display issues and cluttering the interface.
-
-**Key Accomplishments:**
-- Removed legacy buyer questionnaire modal from users page footer
-- Deleted unused buyer-questionnaire.html and send_questionnaire.php files
-- Cleaned up include statements and references
-- Resolved display issues caused by legacy modal code
-
-**Action Required:** None - legacy code completely removed  
-**Files Modified:** pages/users/index.php (removed include)  
-**Files Deleted:** modules/buyer-questionnaire.html, modules/send_questionnaire.php  
-**Files Created:** [Remove-Questionnaire-from-footer.md](Details/Remove-Questionnaire-from-footer.md) - Detailed cleanup documentation
-
-**Benefits:**
-- Cleaner users page interface
-- Removed unused legacy functionality
-- Improved page performance
-- Better code maintainability
-
-**Summary:** Enhanced the archive CSV export functionality to include proper headers for better data organization and readability.
-
-**Key Accomplishments:**
-- Added descriptive headers to CSV export files
-- Improved data structure for better analysis
-- Enhanced user experience when working with exported data
-
-**Action Required:** None - enhancement complete  
-**Files Modified:** Archive export functionality  
-**Files Created:** [ARCHIVE-CSV-HEADER.md](Details/ARCHIVE-CSV-HEADER.md)
-
----
-
 ### PRINT TIMELINE HEADER ENHANCEMENT - August 26, 2025
 **Date:** August 26, 2025  
 **Type:** Feature Enhancement  
 **Status:** Completed  
 **Priority:** MEDIUM  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Enhanced the Print Timeline functionality in the agents section to include a descriptive header row showing client name and property address above the existing column headers.
 
@@ -186,7 +176,7 @@ BEGIN UPDATES
 
 **Action Required:** None - enhancement complete  
 **Files Modified:** include/traits/t_transaction_handler.php  
-**Files Created:** [Print Timeline-add header.md](Details/Print Timeline-add header.md)
+**Files Created:** [Print Timeline-add header.md](Details/Print%20Timeline-add%20header.md)
 
 **Benefits:**
 - Better document identification when printing
@@ -204,52 +194,7 @@ BEGIN UPDATES
 - Added "UNDER CONTRACT" banner row before Contract Begins timeline item
 - Creates clear visual separation for contract-related tasks
 - Improves document organization and readability
-- Enhanced professional appearance for client meetings  
-**Priority:** Medium  
-
-**Summary:** Enhanced the transaction archiving functionality to include descriptive headers in CSV exports. When agents archive transactions via dashboard, timeline item, or agent tools, the generated CSV now includes a contextual header row with client name, property address, and archive date.
-
-**Key Features:**
-- Header row format: "Activity Log for [client-name] - [client property address] - Archived [archive-date]"
-- Applies to all three archiving methods
-- Maintains existing error handling and automatic file cleanup
-- Improves CSV readability and context for agents
-
-**Action Required:** None - feature complete and tested  
-**Files Modified:** include/classes/c_user.php  
-**Files Created:** [Update Archive CSV with header.md](Details/Update%20Archive%20CSV%20with%20header.md)
-
----
-
-### COORDINATOR PROXY BANNER EXIT LINK - August 26, 2025
-**Date:** August 26, 2025  
-**Type:** User Experience Enhancement  
-**Status:** Completed  
-**Priority:** MEDIUM  
-
-**Summary:** Enhanced the coordinator proxy functionality by adding an exit link directly within the yellow banner that appears when coordinators are proxying into agent accounts.
-
-**Key Accomplishments:**
-- Added "Exit Account and Return to Coordinator Dashboard" link to proxy banner
-- Banner now displays: "Managing [agent name] Account. Exit Account and Return to Coordinator Dashboard"
-- Improved user experience by providing direct access to exit functionality
-- Maintained existing "Exit" link in navigation for consistency
-
-**Technical Details:**
-- Modified `pages/agents/modules/footer.php` to include exit link in proxy notice
-- Link styled with black text, underline, and bold formatting for visibility
-- Uses same logout action (`/pages/agents/index.php?action=logout`) as navigation exit link
-- Coordinators can now exit proxy mode directly from the banner without navigating to top menu
-
-**Action Required:** None - feature fully implemented and functional  
-**Files Modified:** pages/agents/modules/footer.php  
-**Files Created:** [Coordinator-Proxy-Banner-Exit-Link.md](Details/Coordinator-Proxy-Banner-Exit-Link.md) - Detailed implementation documentation
-
-**Benefits:**
-- Improved user experience for coordinators using proxy functionality
-- Reduced navigation steps to exit proxy mode
-- Clear visual indication of proxy status with actionable exit option
-- Maintains consistency with existing logout functionality
+- Enhanced professional appearance for client meetings
 
 ---
 
@@ -258,6 +203,7 @@ BEGIN UPDATES
 **Type:** Bug Fix and Enhancement  
 **Status:** Partially Resolved  
 **Priority:** HIGH  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
 
 **Summary:** Identified and partially resolved issues with the archive transaction functionality, specifically CSV file attachments and email template image display.
 
@@ -287,5 +233,98 @@ BEGIN UPDATES
 - Custom template engine syntax not being processed by email system
 - Image variables properly populated but template rendering failing
 - Requires additional debugging to identify root cause of image display failure
+
+---
+
+### COORDINATOR PROXY BANNER EXIT LINK - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** User Experience Enhancement  
+**Status:** Completed  
+**Priority:** MEDIUM  
+**Branch:** Edits-to-Aug-Paul-DevUpdates  
+
+**Summary:** Enhanced the coordinator proxy functionality by adding an exit link directly within the yellow banner that appears when coordinators are proxying into agent accounts.
+
+**Key Accomplishments:**
+- Added "Exit Account and Return to Coordinator Dashboard" link to proxy banner
+- Banner now displays: "Managing [agent name] Account. Exit Account and Return to Coordinator Dashboard"
+- Improved user experience by providing direct access to exit functionality
+- Maintained existing "Exit" link in navigation for consistency
+
+**Technical Details:**
+- Modified `pages/agents/modules/footer.php` to include exit link in proxy notice
+- Link styled with black text, underline, and bold formatting for visibility
+- Uses same logout action (`/pages/agents/index.php?action=logout`) as navigation exit link
+- Coordinators can now exit proxy mode directly from the banner without navigating to top menu
+
+**Action Required:** None - feature fully implemented and functional  
+**Files Modified:** pages/agents/modules/footer.php  
+**Files Created:** [Coordinator-Proxy-Banner-Exit-Link.md](Details/Coordinator-Proxy-Banner-Exit-Link.md) - Detailed implementation documentation
+
+**Benefits:**
+- Improved user experience for coordinators using proxy functionality
+- Reduced navigation steps to exit proxy mode
+- Clear visual indication of proxy status with actionable exit option
+- Maintains consistency with existing logout functionality
+
+---
+
+## BRANCH: safe-deployment (August 26, 2025) - **MERGED**
+*All changes below were made on the safe-deployment branch and have been merged*
+
+### LEGACY BUYER QUESTIONNAIRE MODAL REMOVAL - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Code Cleanup & Bug Fix  
+**Status:** Completed  
+**Priority:** MEDIUM  
+**Branch:** safe-deployment (MERGED)  
+
+**Summary:** Successfully removed legacy "Home Buyer Questionnaire" modal that was appearing at the bottom of the users page, causing display issues and cluttering the interface.
+
+**Key Accomplishments:**
+- Removed legacy buyer questionnaire modal from users page footer
+- Deleted unused buyer-questionnaire.html and send_questionnaire.php files
+- Cleaned up include statements and references
+- Resolved display issues caused by legacy modal code
+
+**Action Required:** None - legacy code completely removed  
+**Files Modified:** pages/users/index.php (removed include)  
+**Files Deleted:** modules/buyer-questionnaire.html, modules/send_questionnaire.php  
+**Files Created:** [Remove-Questionnaire-from-footer.md](Details/Remove-Questionnaire-from-footer.md) - Detailed cleanup documentation
+
+**Benefits:**
+- Cleaner users page interface
+- Removed unused legacy functionality
+- Improved page performance
+- Better code maintainability
+
+---
+
+## BRANCH: pete-ai-fixes (August 26, 2025+)
+*Current active branch for new development*
+
+### BRANCH CREATION - August 26, 2025
+**Date:** August 26, 2025  
+**Type:** Branch Management  
+**Status:** Completed  
+**Priority:** MEDIUM  
+**Branch:** pete-ai-fixes  
+
+**Summary:** Created new development branch `pete-ai-fixes` for continued development and improvements to the WhatsNext real estate application.
+
+**Key Accomplishments:**
+- Successfully merged `safe-deployment` branch into main development
+- Created new active development branch `pete-ai-fixes`
+- All previous changes from `Edits-to-Aug-Paul-DevUpdates` and `safe-deployment` branches preserved
+- Ready for new feature development and bug fixes
+
+**Action Required:** None - branch ready for development  
+**Files Modified:** None (branch creation only)  
+**Files Created:** None
+
+**Next Steps:**
+- Continue development on `pete-ai-fixes` branch
+- All future updates will be documented under this branch header
+- Maintain clear branch tracking for rollback purposes
 
 ---
