@@ -146,7 +146,13 @@ BEGIN UPDATES
 - Changed date display from YYYY-MM-DD to "Month Day, Year" format
 - Improved readability of printed timeline documents
 - More professional appearance for client presentations
-- Enhanced user experience with human-readable dates  
+- Enhanced user experience with human-readable dates
+
+**Additional Enhancement - Under Contract Section Header:**
+- Added "UNDER CONTRACT" banner row before Contract Begins timeline item
+- Creates clear visual separation for contract-related tasks
+- Improves document organization and readability
+- Enhanced professional appearance for client meetings  
 **Priority:** Medium  
 
 **Summary:** Enhanced the transaction archiving functionality to include descriptive headers in CSV exports. When agents archive transactions via dashboard, timeline item, or agent tools, the generated CSV now includes a contextual header row with client name, property address, and archive date.

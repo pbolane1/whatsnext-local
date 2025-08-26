@@ -3596,6 +3596,12 @@ trait transaction_handler
 		 	$d2=new date();
 			$d2->SetTimestamp($timeline_item->Get('timeline_item_complete'));
 			
+			// Add UNDER CONTRACT row before Contract Begins
+			if($timeline_item->Get('timeline_item_title') == 'Contract Begins' && $user->Get('user_under_contract'))
+			{
+				echo("<tr class='agent_bg_color1'><td colspan='4' style='text-align:center;font-weight:bold;'>UNDER CONTRACT</td></tr>");
+			}
+			
 			echo("<tr>");
 			echo("<td>".$timeline_item->Get('timeline_item_title')."</td>");
 			echo("<td class='date'>".(($user->Get('user_under_contract') and $d->IsValid())?$d->GetDate('F j, Y'):'')."</td>");
