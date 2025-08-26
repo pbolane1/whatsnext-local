@@ -3598,7 +3598,7 @@ trait transaction_handler
 			
 			echo("<tr>");
 			echo("<td>".$timeline_item->Get('timeline_item_title')."</td>");
-			echo("<td class='date'>".(($user->Get('user_under_contract') and $d->IsValid())?$d->GetDBDate():'')."</td>");
+			echo("<td class='date'>".(($user->Get('user_under_contract') and $d->IsValid())?$d->GetDate('F j, Y'):'')."</td>");
 //			if($timeline_item->Get('timeline_item_complete') and $timeline_item->Get('timeline_item_completed_class')!='user_contact')
 //				echo("<td class='date'>".$d2->GetDate('m/d/Y')."</td>");				
 //			else
