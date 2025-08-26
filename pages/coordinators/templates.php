@@ -10,7 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='coordinator'>
-	<?php $__headline__=$coordinator->IsLoggedIn()?$coordinator->Get('coordinator_name'):'Login';?>
+	<?php $__headline__=$coordinator->IsLoggedIn()?$coordinator->Get('coordinator_name'):'Manager Login';?>
 	<?php include ('modules/header.php');?>
 	<?php info_bubble::ListAll('TEMPLATES','coordinator'); ?>
 	<div class='content_area'>	

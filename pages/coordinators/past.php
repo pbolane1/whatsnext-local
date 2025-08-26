@@ -10,7 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='agent'>
-	<?php $__headline__=$coordinator->IsLoggedIn()?'Archived Transactions':'Login';?>
+	<?php $__headline__=$coordinator->IsLoggedIn()?'Archived Transactions':'Manager Login';?>
 	<?php include ('modules/header.php');?>
 	<?php info_bubble::ListAll('CLIENTS','AGENT'); ?>
 	<div class='content_area'>	

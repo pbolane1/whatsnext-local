@@ -10,7 +10,7 @@
 	<?php include('modules/head.php');?>	
 </head>
 <body class='agent'>
-	<?php $__headline__=$coordinator->IsLoggedIn()?'Transaction Timeline':'Login';?>
+	<?php $__headline__=$coordinator->IsLoggedIn()?'Transaction Timeline':'Manager Login';?>
 	<?php include ('modules/header.php');?>
 	<?php info_bubble::ListAll('SETTINGS','AGENT'); ?>
 	<div class='content_area'>	

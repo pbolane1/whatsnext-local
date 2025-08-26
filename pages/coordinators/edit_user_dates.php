@@ -11,7 +11,7 @@
 </head>
 <body class='x_agent buyer'>
 	<?php 
-		$__headline__='Login';
+		$__headline__='Manager Login';
 		if($coordinator->IsLoggedIn())
 		{
 			$__headline__="Terms Of Contract";
