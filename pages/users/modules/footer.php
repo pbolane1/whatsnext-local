@@ -9,6 +9,50 @@
 	<a href="#" onclick="$('HTML,BODY').animate({scrollTop:'0'});return false;"><i class="fas fa-arrow-up"></i></a></div>
 </div>
 
+<!-- Agent Info Section -->
+<div class="agent_info_section agent_border_color1">
+    <div class="agent_info_content">
+        <!-- Left Side - Agent Information -->
+        <div class="agent_info_left">
+            <?php 
+            $agent = $user_contact->GetAgent();
+            if($agent && $agent->Get('agent_image_file3')): ?>
+                <div class="agent_headshot">
+                    <img src="<?php echo $agent->GetThumb(120,120,false,'agent_image_file3',true); ?>" alt="Agent Headshot">
+                </div>
+            <?php endif; ?>
+            <div class="agent_details">
+                <div class="agent_name"><?php echo $agent ? $agent->Get('agent_name') : 'Agent Name'; ?></div>
+                <div class="agent_company"><?php echo $agent ? $agent->Get('agent_company') : 'Company Name'; ?></div>
+                <div class="agent_dre">DRE# <?php echo $agent ? $agent->Get('agent_number') : '00000000'; ?></div>
+                <div class="agent_phone"><?php echo $agent ? $agent->Get('agent_cellphone') : 'Phone Number'; ?></div>
+            </div>
+        </div>
+        
+        <!-- Middle Spacer -->
+        <div class="agent_info_spacer"></div>
+        
+        <!-- Right Side - Company Logo and Address -->
+        <div class="agent_info_right">
+            <?php if($agent && $agent->Get('agent_image_file2')): ?>
+                <div class="company_logo">
+                    <img src="<?php echo $agent->GetThumb(200,65,false,'agent_image_file2',true); ?>" alt="Company Logo">
+                </div>
+            <?php endif; ?>
+            <div class="company_address">
+                <?php 
+                if($agent) {
+                    $address = $agent->Get('agent_address') ?: 'Company Address';
+                    echo nl2br($address);
+                } else {
+                    echo 'Company Address';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class='disclaimer'>
 	<div class='container'>
