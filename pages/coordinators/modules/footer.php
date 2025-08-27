@@ -2,6 +2,23 @@
 	<a href="#" onclick="$('HTML,BODY').animate({scrollTop:'0'});return false;"><i class="fas fa-arrow-up"></i></a></div>
 </div>
 
+<!-- Coordinator Company Section -->
+<div class="coordinator_company_section agent_border_color1">
+    <div class="coordinator_company_content">
+        <?php if($coordinator->Get('coordinator_image_file')): ?>
+            <div class="coordinator_company_logo">
+                <img src="<?php echo $coordinator->GetThumb(200,65,false,'coordinator_image_file',true); ?>" alt="Coordinator Company Logo">
+            </div>
+        <?php endif; ?>
+        <div class="coordinator_company_address">
+            <?php 
+            $address = $coordinator->Get('coordinator_address') ?: 'Company Address';
+            echo nl2br($address);
+            ?>
+        </div>
+    </div>
+</div>
+
 
 
 <div class='disclaimer'>
