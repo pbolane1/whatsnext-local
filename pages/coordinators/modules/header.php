@@ -1,4 +1,4 @@
-<div class='header_area coordinator_border_color1'>
+<div class='header_area agent_border_color1'>
 	<div class='container'>
 		<div class='navigation_area'>
 			<nav class="navbar navbar-inverse">
