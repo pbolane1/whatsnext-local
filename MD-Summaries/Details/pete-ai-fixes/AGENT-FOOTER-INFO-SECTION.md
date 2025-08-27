@@ -1,4 +1,4 @@
-# RESTORE AGENT FOOTER - Agent Info Section Enhancement
+# AGENT FOOTER INFO SECTION - Agent Info Section Enhancement
 
 **Date:** August 26, 2025  
 **Type:** Feature Enhancement  
@@ -10,18 +10,19 @@
 
 ## OVERVIEW
 
-Added a new agent information section above the footer disclaimer in the agents settings page. This section displays agent contact information and company branding in a professional, responsive layout.
+Added a new agent information section above the footer disclaimer that displays agent contact information and company branding in a professional, responsive layout. This section is now implemented on both agent and user pages, ensuring consistent branding and contact information across all user types.
 
 ## PROBLEM STATEMENT
 
-The footer area was missing a dedicated section to prominently display agent information and company branding. Users needed a clear way to see agent contact details and company information at the bottom of the page.
+The footer area was missing a dedicated section to prominently display agent information and company branding. Both agents and users needed a clear way to see agent contact details and company information at the bottom of the page. Additionally, user pages lacked the same professional footer appearance that agent pages had.
 
 ## SOLUTION IMPLEMENTED
 
 ### New Agent Info Section
-- **Location:** Above the disclaimer in `pages/agents/modules/footer.php`
+- **Location:** Above the disclaimer in both `pages/agents/modules/footer.php` and `pages/users/modules/footer.php`
 - **Background:** Dark gray (#3a3a3a) with 1px border underneath using `agent_border_color1`
 - **Layout:** Three-column responsive flexbox design
+- **Scope:** Now implemented across both agent and user pages for consistent branding
 
 ### Layout Structure
 1. **Left Column (Agent Information):**
@@ -49,7 +50,7 @@ The footer area was missing a dedicated section to prominently display agent inf
 ### Files Modified
 
 #### 1. `pages/agents/modules/footer.php`
-**New HTML Structure Added:**
+**New HTML Structure Added (Agent Pages):**
 ```php
 <!-- Agent Info Section -->
 <div class="agent_info_section agent_border_color1">
@@ -90,7 +91,61 @@ The footer area was missing a dedicated section to prominently display agent inf
 </div>
 ```
 
-#### 2. `css/global.css`
+#### 2. `pages/users/modules/footer.php`
+**New HTML Structure Added (User Pages):**
+```php
+<!-- Agent Info Section -->
+<div class="agent_info_section agent_border_color1">
+    <div class="agent_info_content">
+        <!-- Left Side - Agent Information -->
+        <div class="agent_info_left">
+            <?php 
+            $agent = $user_contact->GetAgent();
+            if($agent && $agent->Get('agent_image_file3')): ?>
+                <div class="agent_headshot">
+                    <img src="<?php echo $agent->GetThumb(120,120,false,'agent_image_file3',true); ?>" alt="Agent Headshot">
+                </div>
+            <?php endif; ?>
+            <div class="agent_details">
+                <div class="agent_name"><?php echo $agent ? $agent->Get('agent_name') : 'Agent Name'; ?></div>
+                <div class="agent_company"><?php echo $agent ? $agent->Get('agent_company') : 'Company Name'; ?></div>
+                <div class="agent_dre">DRE# <?php echo $agent ? $agent->Get('agent_number') : '00000000'; ?></div>
+                <div class="agent_phone"><?php echo $agent ? $agent->Get('agent_cellphone') : 'Phone Number'; ?></div>
+            </div>
+        </div>
+        
+        <!-- Middle Spacer -->
+        <div class="agent_info_spacer"></div>
+        
+        <!-- Right Side - Company Logo and Address -->
+        <div class="agent_info_right">
+            <?php if($agent && $agent->Get('agent_image_file2')): ?>
+                <div class="company_logo">
+                    <img src="<?php echo $agent->GetThumb(200,65,false,'agent_image_file2',true); ?>" alt="Company Logo">
+                </div>
+            <?php endif; ?>
+            <div class="company_address">
+                <?php 
+                if($agent) {
+                    $address = $agent->Get('agent_address') ?: 'Company Address';
+                    echo nl2br($address);
+                } else {
+                    echo 'Company Address';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+**Key Differences for User Pages:**
+- Uses `$user_contact->GetAgent()` to retrieve the agent associated with the current user
+- Includes null checks for agent existence before accessing agent data
+- Provides fallback values if agent data is unavailable
+- Maintains identical visual appearance to agent pages
+
+#### 3. `css/global.css`
 **New CSS Classes Added:**
 ```css
 /* Agent Info Section */
@@ -277,7 +332,8 @@ All fields include fallback values if the agent data is empty:
 
 ### Files to Deploy
 1. `css/global.css` - New CSS styles
-2. `pages/agents/modules/footer.php` - New HTML structure
+2. `pages/agents/modules/footer.php` - New HTML structure (agent pages)
+3. `pages/users/modules/footer.php` - New HTML structure (user pages)
 
 ### Dependencies
 - Requires agent authentication to access agent data
@@ -285,15 +341,22 @@ All fields include fallback values if the agent data is empty:
 - Uses existing color classes (`agent_border_color1`)
 
 ### Rollback Plan
-- Remove the new HTML section from footer.php
-- Remove the new CSS classes from global.css
+- Remove the new HTML section from `pages/agents/modules/footer.php`
+- Remove the new HTML section from `pages/users/modules/footer.php`
+- Remove the new CSS classes from `css/global.css`
 - No database changes required
 
 ## CONCLUSION
 
-The new agent footer info section successfully provides a professional, branded area for displaying agent contact information and company details. The responsive design ensures optimal viewing across all devices, while the three-column layout provides excellent positioning control for the right-side content.
+The new agent footer info section successfully provides a professional, branded area for displaying agent contact information and company details across both agent and user pages. The responsive design ensures optimal viewing across all devices, while the three-column layout provides excellent positioning control for the right-side content.
 
-The implementation follows existing code patterns and maintains consistency with the site's design language. All agent data is properly validated with fallback values, ensuring the layout remains intact even with incomplete information.
+The implementation follows existing code patterns and maintains consistency with the site's design language. All agent data is properly validated with fallback values, ensuring the layout remains intact even with incomplete information. By implementing the same footer on user pages, clients now see the same professional appearance and agent contact information that agents see, creating a consistent brand experience throughout the application.
+
+**Key Benefits of User Page Implementation:**
+- **Consistent Branding:** Users see the same professional footer as agents
+- **Agent Visibility:** Clients always have access to agent contact information
+- **Professional Appearance:** User pages now have the same polished look
+- **Brand Reinforcement:** Company logo and information visible to all users
 
 ---
 

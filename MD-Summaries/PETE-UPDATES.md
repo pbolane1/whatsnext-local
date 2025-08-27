@@ -336,7 +336,7 @@ BEGIN UPDATES
 **Priority:** MEDIUM  
 **Branch:** pete-ai-fixes  
 
-**Summary:** Added a new agent information section above the footer disclaimer that displays agent headshot, name, company, DRE#, phone on the left side and company logo with address on the right side.
+**Summary:** Added a new agent information section above the footer disclaimer that displays agent headshot, name, company, DRE#, phone on the left side and company logo with address on the right side. This section is now implemented on both agent and user pages for consistent branding and professional appearance.
 
 **Key Accomplishments:**
 - New agent info section with dark background (#3a3a3a)
@@ -347,5 +347,5 @@ BEGIN UPDATES
 - Uses existing agent data fields (headshot, company logo, address)
 
 **Action Required:** None - enhancement complete  
-**Files Modified:** css/global.css, pages/agents/modules/footer.php  
+**Files Modified:** css/global.css, pages/agents/modules/footer.php, pages/users/modules/footer.php  
 **Files Created:** [AGENT-FOOTER-INFO-SECTION.md](Details/pete-ai-fixes/AGENT-FOOTER-INFO-SECTION.md)
