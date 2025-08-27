@@ -5,7 +5,7 @@ Document last updated: August 26, 2025
 Last feature updated: Agent Footer Info Section
 
 ### Overview
-This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature are organized by branch in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone. Changes are listed in Reverse Chronological Order
+This file is meant to document the changes made to the site by Pete. This file will be a general overview of the individual fixes and features, while detailed *.md files for each fix/feature are organized by branch in the "(MD-Summaries/Details)" folder. All times are Pacific Time Zone. Changes are listed in Reverse Chronological Order.
 
 ### BRANCH TRACKING
 **Current Active Branch:** `pete-ai-fixes`  
@@ -60,7 +60,7 @@ BEGIN UPDATES
 
 **Action Required:** None - environment fully functional and ready for development  
 **Files Modified:** docker-compose.yml, docker/apache/Dockerfile, include/common.php, include/lib/navigation.php  
-**Files Created:** [SETUP-DOCKER.md](Details/Edits-to-Aug-Paul-DevUpdates/SETUP-DOCKER.md) - Comprehensive Docker setup documentation
+**Files Created:** [DOCKER-DEVELOPMENT-ENVIRONMENT-SETUP.md](Details/Edits-to-Aug-Paul-DevUpdates/DOCKER-DEVELOPMENT-ENVIRONMENT-SETUP.md) - Comprehensive Docker setup documentation
 
 **Benefits:**
 - Consistent development environment across all machines
@@ -113,7 +113,7 @@ BEGIN UPDATES
 
 **Action Required:** None - enhancement complete  
 **Files Modified:** include/traits/t_transaction_handler.php  
-**Files Created:** [Print Timeline-add header.md](Details/Edits-to-Aug-Paul-DevUpdates/Print%20Timeline-add%20header.md)
+**Files Created:** [PRINT-TIMELINE-HEADER-ENHANCEMENT.md](Details/Edits-to-Aug-Paul-DevUpdates/PRINT-TIMELINE-HEADER-ENHANCEMENT.md)
 
 **Benefits:**
 - Better document identification when printing
@@ -158,7 +158,7 @@ BEGIN UPDATES
 
 **Action Required:** None - feature fully implemented and functional  
 **Files Modified:** pages/agents/modules/footer.php  
-**Files Created:** [Coordinator-Proxy-Banner-Exit-Link.md](Details/Edits-to-Aug-Paul-DevUpdates/Coordinator-Proxy-Banner-Exit-Link.md) - Detailed implementation documentation
+**Files Created:** [COORDINATOR-PROXY-BANNER-EXIT-LINK.md](Details/Edits-to-Aug-Paul-DevUpdates/COORDINATOR-PROXY-BANNER-EXIT-LINK.md) - Detailed implementation documentation
 
 **Benefits:**
 - Improved user experience for coordinators using proxy functionality
@@ -188,7 +188,7 @@ BEGIN UPDATES
 
 **Action Required:** None - fix complete and functional  
 **Files Modified:** include/traits/t_public_user.php (renamed from t_pubic_user.php)  
-**Files Created:** [Fix-t_pubic_user.php.md](Details/main/Fix-t_pubic_user.php.md) - Detailed fix documentation
+**Files Created:** [TRAIT-FILENAME-TYPO-FIX.md](Details/main/TRAIT-FILENAME-TYPO-FIX.md) - Detailed fix documentation
 
 **Impact:**
 - Prevents potential PHP autoloading failures
@@ -225,7 +225,7 @@ BEGIN UPDATES
 
 **Action Required:** Further investigation needed for image display issue  
 **Files Modified:** include/classes/c_user.php, email_templates/email_activity_log.html  
-**Files Created:** [CSV-Email-Template-Issues.md](Details/main/CSV-Email-Template-Issues.md)
+**Files Created:** [ARCHIVE-CSV-AND-EMAIL-TEMPLATE-ISSUES.md](Details/main/ARCHIVE-CSV-AND-EMAIL-TEMPLATE-ISSUES.md)
 
 **Technical Details:**
 - Temp directory permissions were preventing CSV file creation
@@ -256,7 +256,7 @@ BEGIN UPDATES
 **Action Required:** None - legacy code completely removed  
 **Files Modified:** pages/users/index.php (removed include)  
 **Files Deleted:** modules/buyer-questionnaire.html, modules/send_questionnaire.php  
-**Files Created:** [Remove-Questionnaire-from-footer.md](Details/safe-deployment/Remove-Questionnaire-from-footer.md) - Detailed cleanup documentation
+**Files Created:** [LEGACY-BUYER-QUESTIONNAIRE-MODAL-REMOVAL.md](Details/safe-deployment/LEGACY-BUYER-QUESTIONNAIRE-MODAL-REMOVAL.md) - Detailed cleanup documentation
 
 **Benefits:**
 - Cleaner users page interface
@@ -348,4 +348,4 @@ BEGIN UPDATES
 
 **Action Required:** None - enhancement complete  
 **Files Modified:** css/global.css, pages/agents/modules/footer.php  
-**Files Created:** [RESTORE-AGENT-FOOTER.md](Details/pete-ai-fixes/RESTORE-AGENT-FOOTER.md)
+**Files Created:** [AGENT-FOOTER-INFO-SECTION.md](Details/pete-ai-fixes/AGENT-FOOTER-INFO-SECTION.md)
